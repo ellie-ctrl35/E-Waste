@@ -1,11 +1,19 @@
-import React from 'react';
+import {useMemo} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap} from '@react-google-maps/api'
-function UserHome() {
 
-    const {isLoaded} = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-    })
+const center = {
+    lat: 37.7749,
+    lng: -122.4194
+}
+
+function UserHome() {
+    const loaderOptions = useMemo(() => ({
+        googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
+        // Add other consistent options here if necessary
+    }), []);
+
+    const { isLoaded } = useJsApiLoader(loaderOptions);
     if (!isLoaded) {
         return <div>Loading...</div>
     }
@@ -13,8 +21,8 @@ function UserHome() {
     return (
         <div className='App'>
             <div className='Mapbox'>
-              <GoogleMap>
-                
+              <GoogleMap zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
+
               </GoogleMap>
             </div>
         </div>
