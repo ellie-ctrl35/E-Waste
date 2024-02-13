@@ -15,3 +15,8 @@
   height: 90vh;
   background-color: rgb(47, 95, 138);
 }
+.location-btn{
+  width: 50%;
+  height: 10%;
+  background-color: aqua;
+}
