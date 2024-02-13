@@ -1,8 +1,8 @@
 import React from 'react';
-
+import'../../App.css';
 function UserHome(props) {
     return (
-        <div>
+        <div className='App'>
             
         </div>
     );
