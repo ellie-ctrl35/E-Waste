@@ -1,9 +1,11 @@
 import React from 'react';
 import'../../App.css';
-function UserHome(props) {
+function UserHome() {
     return (
         <div className='App'>
-            
+            <div className='Mapbox'>
+
+            </div>
         </div>
     );
 }
