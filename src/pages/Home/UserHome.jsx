@@ -52,6 +52,19 @@ function UserHome() {
             console.log(data);
     };
 
+    const getUserLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                setLat(position.coords.latitude);
+                setLong(position.coords.longitude);
+            }, () => {
+                console.error('Error: The Geolocation service failed.');
+            });
+        } else {
+            console.error('Error: Your browser doesn\'t support geolocation.');
+        }
+    };
+
     const { isLoaded } = useJsApiLoader(loaderOptions);
     if (!isLoaded) {
         return <div>Loading...</div>
@@ -73,6 +86,7 @@ function UserHome() {
               </GoogleMap>
             </div>
             <button onClick={sendLocationData} className='location-btn'>Send Location</button>
+            <button onClick={getUserLocation} className='location-btn'>Use My Location</button>
         </div>
     );
 }
