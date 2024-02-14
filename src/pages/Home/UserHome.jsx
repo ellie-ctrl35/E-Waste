@@ -41,7 +41,7 @@ function UserHome() {
             placeName
         };
 
-        axios.post('http://localhost:5000/api/pins', data)
+        axios.post('http://localhost:5000/api/request', data)
             .then(response => {
                 console.log('Success:', response.data);
             })
