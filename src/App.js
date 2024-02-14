@@ -3,12 +3,14 @@ import './App.css';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import UserHome from './pages/Home/UserHome';
+import AdminHome from './pages/Home/AdminHome';
 
 function App() {
   return (
     <BrowserRouter>
             <Routes>
                 <Route path="/" element={<UserHome />} />
+                <Route path="/admin" element={<AdminHome />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
             </Routes>

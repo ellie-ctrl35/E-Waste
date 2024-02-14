@@ -1,6 +1,6 @@
 import {useEffect, useMemo,useState} from 'react';
 import'../../App.css';
-import {useJsApiLoader,GoogleMap} from '@react-google-maps/api';
+import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import axios from 'axios';
 
 const center = {
@@ -10,7 +10,7 @@ const center = {
 
 function AdminHome() {
 
-    const [requests,setRequest]= useState(null)
+    const [requests,setRequest]= useState([]);
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
        
@@ -37,19 +37,23 @@ function AdminHome() {
     }
 
     return (
-        <div>
-            <GoogleMap
+        <div className='App'>
+             <div className='Mapbox'>
+              <GoogleMap
                zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
-               onDblClick={handleMapClick}
+               
             >
                 {requests.map(request => (
                     <Marker
-                        key={request.id} // Replace 'id' with the actual unique identifier of the request
+                        key={request._id} // Replace 'id' with the actual unique identifier of the request
                         position={{ lat: request.lat, lng: request.long }}
                     />
                 ))}
              
             </GoogleMap>
+
+             </div>
+
         </div>
     );
 }
