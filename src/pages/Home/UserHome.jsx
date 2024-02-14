@@ -1,4 +1,4 @@
-import {useMemo} from 'react';
+import {useMemo,useState} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap} from '@react-google-maps/api';
 import axios from 'axios';
@@ -9,9 +9,11 @@ const center = {
 }
 
 function UserHome() {
-    //const [username, setUsername] = useState('someUsername'); // replace with actual username logic
-   // const [number, setNumber] = useState('1234567890');       // replace with actual number logic
-  //  const [location, setLocation] = useState({ lat: null, lng: null, name: null });
+    const [long, setLong] = useState(0);
+    const [placeName, setPlaceName] = useState('Place Name');
+    const username = 'username';       // replace with actual username logic
+   const number = '1234567890';       // replace with actual number logic
+   const [lat, setLat] = useState(0);
 
 
     const loaderOptions = useMemo(() => ({
@@ -19,19 +21,24 @@ function UserHome() {
        
     }), []);
 
-   // const handleMapClick = (event) => {
+    const handleMapClick = (event) => {
+         setLong(event.latLng.lng());
+         setLat(event.latLng.lat());
+         setPlaceName('Place Name');
     //    setLocation({
     //        lat: event.latLng.lat(),
       //      lng: event.latLng.lng(),
       //      name: 'Place Name' // Replace this with actual place name retrieval logic if available
     //    });
-   // };
+    };
 
-   {/* const sendLocationData = () => {
+   const sendLocationData = () => {
         const data = {
             username,
             number,
-            location
+            lat,
+            long,
+            placeName
         };
 
         axios.post('YOUR_API_ENDPOINT', data)
@@ -41,7 +48,9 @@ function UserHome() {
             .catch(error => {
                 console.error('Error:', error);
             });
-    };*/}
+
+            console.log(data);
+    };
 
     const { isLoaded } = useJsApiLoader(loaderOptions);
     if (!isLoaded) {
@@ -53,12 +62,12 @@ function UserHome() {
             <div className='Mapbox'>
              <GoogleMap
                zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
-             
+               onDblClick={handleMapClick}
                >
 
     </GoogleMap>
             </div>
-            <button className='location-btn'>Send Location</button>
+            <button onClick={sendLocationData} className='location-btn'>Send Location</button>
         </div>
     );
 }
