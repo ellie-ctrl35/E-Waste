@@ -1,6 +1,6 @@
 import {useMemo,useState} from 'react';
 import'../../App.css';
-import {useJsApiLoader,GoogleMap} from '@react-google-maps/api';
+import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import axios from 'axios';
 
 const center = {
@@ -64,8 +64,13 @@ function UserHome() {
                zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
                onDblClick={handleMapClick}
                >
-
-    </GoogleMap>
+                {
+                    lat !== 0 && long !== 0 && (
+                        <Marker position={{lat, lng: long}} />
+                    )
+                
+                }
+              </GoogleMap>
             </div>
             <button onClick={sendLocationData} className='location-btn'>Send Location</button>
         </div>
