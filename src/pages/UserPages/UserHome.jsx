@@ -4,8 +4,8 @@ import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import axios from 'axios';
 
 const center = {
-    lat:  8.00000000,
-    lng: -2.00000000
+    lat:   5.614818,
+    lng: -0.205874
 }
 
 function UserHome() {
@@ -53,15 +53,21 @@ function UserHome() {
     };
 
     const getUserLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                setLat(position.coords.latitude);
-                setLong(position.coords.longitude);
-            }, () => {
-                console.error('Error: The Geolocation service failed.');
-            });
-        } else {
-            console.error('Error: Your browser doesn\'t support geolocation.');
+        try{
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    setLat(position.coords.latitude);
+                    setLong(position.coords.longitude);
+                }, () => {
+                    console.error('Error: The Geolocation service failed.');
+                });
+                console.log("Current location gotten")
+            } else {
+                console.error('Error: Your browser doesn\'t support geolocation.');
+            }
+        }
+        catch(err){
+            console.log('Geolocation failed');
         }
     };
 
@@ -81,7 +87,6 @@ function UserHome() {
                     lat !== 0 && long !== 0 && (
                         <Marker position={{lat, lng: long}} />
                     )
-                
                 }
               </GoogleMap>
             </div>

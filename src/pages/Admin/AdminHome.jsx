@@ -4,8 +4,8 @@ import {useJsApiLoader,GoogleMap,Marker,InfoWindow} from '@react-google-maps/api
 import axios from 'axios';
 
 const center = {
-    lat:  8.00000000,
-    lng: -2.00000000
+    lat:   5.614818,
+    lng: -0.205874
 }
 
 function AdminHome() {
