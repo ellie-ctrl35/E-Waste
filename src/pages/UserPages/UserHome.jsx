@@ -102,7 +102,8 @@ function UserHome() {
                      <img src={backBtn}/>
                     </Link>
                     <div className='mid-div-bottom'>
-
+                       <div className='texts'></div>
+                       <button onClick={sendLocationData} className='request-btn'>Send Location</button>
                     </div>
                 </div>
               <div className='Mapbox'>
@@ -122,7 +123,6 @@ function UserHome() {
                 </GoogleMap>
                </div>
             </div>
-           {/* <button onClick={sendLocationData} className='location-btn'>Send Location</button>*/}
             <button onClick={getUserLocation} className='location-btn'>
                 <img src={LiveLocation} alt="location" />
             </button>
