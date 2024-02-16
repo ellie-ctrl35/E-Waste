@@ -110,6 +110,7 @@ justify-content: start;
   font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
   color: white;
+  border-radius: 0.2rem;
 }
 .Mapbox{
   width: 90%;
