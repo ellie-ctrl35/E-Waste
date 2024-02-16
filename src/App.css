@@ -18,9 +18,19 @@
   align-items: center;
   justify-content: space-between;
 }
+.top-div{
+  width: 90%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1C3530;
+
+}
 .Mapbox{
   width: 70%;
-  height: 90vh;
+  height: 80%;
   background-color: rgb(47, 95, 138);
 }
 .location-btn{

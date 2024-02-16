@@ -81,6 +81,7 @@ function UserHome() {
         <div className='App'>
             <Navbar/>
             <div className='right-side'>
+                <div className='top-div'></div>
               <div className='Mapbox'>
                 <GoogleMap
                  zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
