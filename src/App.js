@@ -4,7 +4,7 @@ import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import UserHome from './pages/UserPages/UserHome';
 import AdminHome from './pages/Admin/AdminHome';
-import UserPage from './pages/UserPages/UserPage';
+import User from './pages/UserPages/User';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
                 <Route path="/admin" element={<AdminHome />}/>
                 <Route path="/login" element={<Login />}/>
                 <Route path="/signup" element={<SignUp />}/>
-                <Route path='/userhome' element={<UserPage/>}/>
+                <Route path='/userhome' element={<User/>}/>
             </Routes>
         </BrowserRouter>
   );
