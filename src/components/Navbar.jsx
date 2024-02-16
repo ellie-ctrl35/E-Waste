@@ -11,10 +11,9 @@ const  Navbar = (props) =>{
             </div>
             <div className='nav-items'>
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Services</li>
-                    <li>Contact</li>
+                    <li><Link to='/'>Home</Link></li>
+                    <li><Link to='/about'>About</Link></li>
+                    <li><Link to='/services'>Services</Link></li>
                 </ul>
             </div>
             <div className='logout-container'>
