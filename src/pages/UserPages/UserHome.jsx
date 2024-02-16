@@ -85,7 +85,7 @@ function UserHome() {
                 <div className='mid-div'></div>
               <div className='Mapbox'>
                 <GoogleMap
-                 zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
+                 zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%",borderRadius:"0.6rem"}}
                  onDblClick={handleMapClick}
                 >
                   {
