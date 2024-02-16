@@ -31,6 +31,7 @@
 .search-container{
   width: 60%;
   height: 90%;
+  background-color: aqua;
 }
 .icongroup{
   width: 30%;
@@ -39,6 +40,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: aqua;
 }
 .mid-div{
   width: 90%;
