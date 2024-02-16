@@ -12,12 +12,16 @@ function SignUp() {
                <div className='form-container'>
                 <form>
                     <h1>Login to EcoHaul</h1>
+                    <label>Name</label>
+                    <input type='text' placeholder='Emmanuel Nyatepe'/>
+                    <label>Phone</label>
+                    <input type='number' placeholder='hello@gmail.com'/>
                     <label>Email</label>
                     <input type='text' placeholder='hello@gmail.com'/>
                     <label>Password</label>
                     <input type='password' placeholder='Your Password'/>
-                    <Link className='forgot-pwd'>Forgot Password?</Link>
-                    <button type='submit'>Log in</button>
+                    <Link to="/login" className='forgot-pwd'>Already Have An Account? Log in</Link>
+                    <button type='submit'>Sign up</button>
                     
                 </form>
                </div>
