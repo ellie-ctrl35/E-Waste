@@ -89,6 +89,7 @@ function UserHome() {
                         <input type="text" placeholder="Search for a location" />
                     </div>
                     <div className='icongroup'>
+                        
                     </div>
                 </div>
                 <div className='mid-div'></div>
