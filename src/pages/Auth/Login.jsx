@@ -3,8 +3,10 @@ import './Auth.css'
 
 function Login() {
     return (
-        <div>
-            lets gooo
+        <div className='container'>
+            <div className='auth-container'>
+
+            </div>
         </div>
     );
 }

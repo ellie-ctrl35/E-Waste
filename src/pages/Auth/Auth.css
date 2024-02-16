@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: #1C3530;
+}
+.auth-container{
+    width: 76%;
+    margin-right: 2%;
+    height:90%;
+    background: white;
+    float: right;
+    border-radius: 3rem;
+}
