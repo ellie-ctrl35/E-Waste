@@ -2,4 +2,6 @@
     width: 20vw;
     height: 100vh;
     background-color: #1C3530;
+    margin-top: 0;
+    display: flex;
 }
