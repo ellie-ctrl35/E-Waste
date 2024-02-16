@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function SignUp() {
     const [email,setEmail]= useState("");
-    const [name,setName]= useState("");
+    const [username,setUserName]= useState("");
     const [password,setPassword]=useState("");
     const [phone,setPhone]=useState("");
     const navigate = useNavigate();
@@ -13,9 +13,9 @@ function SignUp() {
     const handleSubmit = (e) =>{
         e.preventDefault();
      axios
-     .post("http://localhost:5000/api/auth/register", { name, email, password,phone })
+     .post("http://localhost:5000/api/auth/register", { username, email, password,phone })
      .then(res => {
-       if (res.status === 200) {
+       if (res.data === "success") {
          navigate('/login');
        }
      })
@@ -32,7 +32,7 @@ function SignUp() {
                 <form onSubmit={handleSubmit}>
                     <h1>Login to EcoHaul</h1>
                     <label>Name</label>
-                    <input type='text' onChange={(e)=>setName(e.target.value)} placeholder='Emmanuel Nyatepe'/>
+                    <input type='text' onChange={(e)=>setUserName(e.target.value)} placeholder='Emmanuel Nyatepe'/>
                     <label>Phone</label>
                     <input type='tel' pattern='[0-9]{3}-[0-9]{4}-[0-9]{3}' onChange={(e)=>setPhone(e.target.value)} placeholder='023-4554-678'/>
                     <label>Email</label>
