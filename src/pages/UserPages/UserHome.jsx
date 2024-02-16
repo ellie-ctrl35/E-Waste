@@ -80,17 +80,19 @@ function UserHome() {
     return (
         <div className='App'>
             <Navbar/>
-            <div className='Mapbox'>
-             <GoogleMap
-               zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
-               onDblClick={handleMapClick}
-               >
-                {
+            <div className='right-side'>
+              <div className='Mapbox'>
+                <GoogleMap
+                 zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
+                 onDblClick={handleMapClick}
+                >
+                  {
                     lat !== 0 && long !== 0 && (
                         <Marker position={{lat, lng: long}} />
                     )
-                }
-              </GoogleMap>
+                  }
+                </GoogleMap>
+               </div>
             </div>
             <button onClick={sendLocationData} className='location-btn'>Send Location</button>
             <button onClick={getUserLocation} className='location-btn'>Use My Location</button>
