@@ -25,14 +25,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #1C3530;
   margin-top: 1%;
 }
 .search-container{
   width: 50%;
-  height: 90%;
-  background-color: aqua;
+  height: 80%;
+  background-color: white;
   margin-left: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .icongroup{
   width: 15%;

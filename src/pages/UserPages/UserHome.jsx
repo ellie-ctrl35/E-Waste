@@ -84,10 +84,10 @@ function UserHome() {
             <div className='right-side'>
                 <div className='top-div'>
                     <div className='search-container'>
-
+                        <img src="" alt="" />
+                        <input type="text" placeholder="Search for a location" />
                     </div>
                     <div className='icongroup'>
-                        
                     </div>
                 </div>
                 <div className='mid-div'></div>
