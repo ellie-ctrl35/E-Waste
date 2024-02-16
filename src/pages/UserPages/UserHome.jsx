@@ -88,7 +88,7 @@ function UserHome() {
                 <GoogleMap
                  options={{
                     streetViewControl: false,
-                    // include other map options here if needed
+                    fullscreenControl: false,
                   }}
                  zoom={11.5} center={center} mapContainerStyle={{width:"100%",height:"100%",borderRadius:"0.6rem"}}
                  onDblClick={handleMapClick}

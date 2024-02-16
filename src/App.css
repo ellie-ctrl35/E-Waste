@@ -44,12 +44,11 @@
   border-radius: 3rem;
 }
 .location-btn{
-  width: 20%;
-  height: 5%;
-  background-color: aqua;
+  background-color: transparent;
+  border: none;
   position: absolute;
-  top: 75%;
-  left: 80%;
+  top: 72%;
+  left: 91.8%;
 }
 .infobox{
   width: 100%;
