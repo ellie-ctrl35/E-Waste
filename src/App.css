@@ -64,9 +64,27 @@
   height: 15%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   background-color: #276868;
+}
+.mid-div-link{
+  margin-left: -90%;
+}
+.mid-div-link img{
+  width: 3.6rem;
+  height: 1rem;
+  margin-left: 1.5rem;
+}
+.mid-div-bottom{
+  width: 90%;
+  height: 70%;
+  display: flex;
+  background-color: dodgerblue;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+
 }
 .Mapbox{
   width: 90%;

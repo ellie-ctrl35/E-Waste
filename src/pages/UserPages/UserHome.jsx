@@ -98,7 +98,7 @@ function UserHome() {
                     </div>
                 </div>
                 <div className='mid-div'>
-                    <Link>
+                    <Link className='mid-div-link'>
                      <img src={backBtn}/>
                     </Link>
                     <div className='mid-div-bottom'>
