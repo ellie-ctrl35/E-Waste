@@ -13,10 +13,11 @@ function SignUp() {
     const handleSubmit = (e) =>{
         e.preventDefault();
      axios
-     .post("http://localhost:5000/register", { name, email, password,phone })
+     .post("http://localhost:5000/api/auth/register", { name, email, password,phone })
      .then(res => {
-       alert('created')
-       navigate('/login')
+       if (res.status === 200) {
+         navigate('/login');
+       }
      })
      .catch((err) => console.log(err));
    }
