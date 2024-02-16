@@ -65,10 +65,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #276868;
 }
 .mid-div-link{
-  margin-left: -90%;
+  margin-left: -95%;
 }
 .mid-div-link img{
   width: 3.6rem;
