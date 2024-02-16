@@ -97,7 +97,9 @@ justify-content: start;
   height: 50%;
   background: #179A72;
   border: none;
+  font-size: 0.9rem;
   font-family: 'Inter', sans-serif;
+  color: white;
 }
 .Mapbox{
   width: 90%;
