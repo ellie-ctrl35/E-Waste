@@ -3,6 +3,7 @@ import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
+import LiveLocation from '../../resources/LiveLocation.png';
 
 const center = {
     lat:   5.614818,
@@ -85,7 +86,11 @@ function UserHome() {
                 <div className='mid-div'></div>
               <div className='Mapbox'>
                 <GoogleMap
-                 zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%",borderRadius:"0.6rem"}}
+                 options={{
+                    streetViewControl: false,
+                    // include other map options here if needed
+                  }}
+                 zoom={11.5} center={center} mapContainerStyle={{width:"100%",height:"100%",borderRadius:"0.6rem"}}
                  onDblClick={handleMapClick}
                 >
                   {
@@ -96,8 +101,10 @@ function UserHome() {
                 </GoogleMap>
                </div>
             </div>
-            <button onClick={sendLocationData} className='location-btn'>Send Location</button>
-            <button onClick={getUserLocation} className='location-btn'>Use My Location</button>
+           {/* <button onClick={sendLocationData} className='location-btn'>Send Location</button>*/}
+            <button onClick={getUserLocation} className='location-btn'>
+                <img src={LiveLocation} alt="location" />
+            </button>
         </div>
     );
 }
