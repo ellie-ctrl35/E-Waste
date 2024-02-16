@@ -1,9 +1,9 @@
 import React from 'react';
-import './navbar.module.css'
+import './Navbar.css'
 const  Navbar = (props) =>{
     return (
         <div className='navbar'>
-          
+          nabbar
         </div>
     );
 }

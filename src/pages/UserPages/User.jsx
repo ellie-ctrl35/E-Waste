@@ -1,9 +1,11 @@
+import Navbar from '../../components/Navbar';
 import './User.css';
 
 function User() {
     return (
         <div className='body'>
-            lets goooooo
+            <Navbar />
+            
         </div>
     );
 }
