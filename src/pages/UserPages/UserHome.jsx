@@ -2,6 +2,7 @@ import {useMemo,useState} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import axios from 'axios';
+import Navbar from '../../components/Navbar';
 
 const center = {
     lat:   5.614818,
@@ -78,6 +79,7 @@ function UserHome() {
 
     return (
         <div className='App'>
+            <Navbar/>
             <div className='Mapbox'>
              <GoogleMap
                zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
