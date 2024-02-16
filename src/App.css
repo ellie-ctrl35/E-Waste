@@ -28,6 +28,18 @@
   background-color: #1C3530;
   margin-top: 1%;
 }
+.search-container{
+  width: 60%;
+  height: 90%;
+}
+.icongroup{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 .mid-div{
   width: 90%;
   height: 15%;

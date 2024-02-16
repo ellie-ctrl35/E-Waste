@@ -82,7 +82,14 @@ function UserHome() {
         <div className='App'>
             <Navbar/>
             <div className='right-side'>
-                <div className='top-div'></div>
+                <div className='top-div'>
+                    <div className='search-container'>
+
+                    </div>
+                    <div className='icongroup'>
+                        
+                    </div>
+                </div>
                 <div className='mid-div'></div>
               <div className='Mapbox'>
                 <GoogleMap
