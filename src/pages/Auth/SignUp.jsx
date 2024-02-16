@@ -1,12 +1,25 @@
 import {useState} from 'react';
 import './Auth.css'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function SignUp() {
     const [email,setEmail]= useState("");
     const [name,setName]= useState("");
     const [password,setPassword]=useState("");
     const navigate = useNavigate();
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+     axios
+     .post("http://localhost:5000/register", { name, email, password })
+     .then(res => {
+       alert('created')
+       navigate('/login')
+     })
+     .catch((err) => console.log(err));
+   }
+
     return (
         <div className='container'>
             <div className='auth-container'>
@@ -14,7 +27,7 @@ function SignUp() {
                     EcoHaul
                 </h1>
                <div className='form-container'>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h1>Login to EcoHaul</h1>
                     <label>Name</label>
                     <input type='text' placeholder='Emmanuel Nyatepe'/>
@@ -25,8 +38,7 @@ function SignUp() {
                     <label>Password</label>
                     <input type='password' placeholder='Your Password'/>
                     <Link to="/login" className='forgot-pwd'>Already Have An Account? Log in</Link>
-                    <button type='submit'>Sign up</button>
-                    
+                    <button type='submit'>Sign up</button>         
                 </form>
                </div>
             </div>
