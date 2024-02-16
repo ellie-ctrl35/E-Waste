@@ -23,21 +23,68 @@
     font-weight: bold;
     float: left;
     margin-left: 2rem;
+    font-family: 'Cantora One', sans-serif;
 }
 .form-container{
     width: 100%;
-    height: 80%;
+    height: 85%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: dodgerblue;
+    margin-bottom: 3%;
 }
 form{
-    width: 60%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: blue;
+}
+form h1{
+    font-size: 2.2rem;
+    font-family: 'Cantora One', sans-serif;
+    text-align: center;
+    color: #1C3530;
+}
+form label{
+    font-family:'Inter';
+font-size: 1.5rem;
+font-weight: 300;
+line-height: 39px;
+letter-spacing: 0em;
+text-align: left;
+margin-bottom:0.3rem ;
+}
+form input{
+    width: 100%;
+    height: 1.4rem;
+    border: 1px solid #787e7d;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Inter';
+    font-size: 1.1rem;
+}
+.forgot-pwd{
+    font-family: 'Inter';
+    font-size: 0.9rem;
+    color: #1C3530;
+    text-align: left;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+form button{
+    width: 105%;
+    height: 2.5rem;
+    background: #1C3530;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: 'Inter';
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    cursor: pointer;
 }

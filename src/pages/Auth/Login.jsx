@@ -1,5 +1,6 @@
 import React from 'react';
 import './Auth.css'
+import { Link } from 'react-router-dom';
 
 function Login() {
     return (
@@ -11,10 +12,13 @@ function Login() {
                <div className='form-container'>
                 <form>
                     <h1>Login to EcoHaul</h1>
+                    <label>Email</label>
                     <input type='text' placeholder='hello@gmail.com'/>
-                    <input type='password' placeholder='Password'/>
-                    <button type='submit'>Login</button>
-                    <p>Don't have an account? <a href='/signup'>Sign Up</a></p>
+                    <label>Password</label>
+                    <input type='password' placeholder='Your Password'/>
+                    <Link className='forgot-pwd'>Forgot Password?</Link>
+                    <button type='submit'>Log in</button>
+                    
                 </form>
                </div>
             </div>
