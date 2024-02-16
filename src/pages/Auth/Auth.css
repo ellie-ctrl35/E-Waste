@@ -13,4 +13,30 @@
     background: white;
     float: right;
     border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.logo{
+    color: #1C3530;
+    font-size: 1.7rem;
+    font-weight: bold;
+    float: left;
+    margin-left: 2rem;
+}
+.form-container{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: dodgerblue;
+}
+form{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
