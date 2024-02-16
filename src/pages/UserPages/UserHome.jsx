@@ -2,7 +2,7 @@ import {useMemo,useState} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import backBtn from '../../resources/backBtn.png';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import Avatar from 'react-avatar';
@@ -21,7 +21,7 @@ function UserHome() {
     const username = 'username';       // replace with actual username logic
    const number = '1234567890';       // replace with actual number logic
    const [lat, setLat] = useState(0);
-
+   const navigate = useNavigate();
 
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
@@ -51,6 +51,7 @@ function UserHome() {
         axios.post('http://localhost:5000/api/request', data)
             .then(response => {
                 console.log('Success:', response.data);
+                navigate('/userhome'); // Replace with actual route to user homepag
             })
             .catch(error => {
                 console.error('Error:', error);
