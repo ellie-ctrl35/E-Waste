@@ -63,7 +63,7 @@
   width: 90%;
   height: 15%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: #276868;

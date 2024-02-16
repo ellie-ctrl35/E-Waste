@@ -1,6 +1,8 @@
 import {useMemo,useState} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
+import backBtn from '../../resources/backBtn.png';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import Avatar from 'react-avatar';
@@ -99,6 +101,9 @@ function UserHome() {
                     <Link>
                      <img src={backBtn}/>
                     </Link>
+                    <div className='mid-div-bottom'>
+
+                    </div>
                 </div>
               <div className='Mapbox'>
                 <GoogleMap
