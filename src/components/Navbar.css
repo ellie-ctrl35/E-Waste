@@ -35,6 +35,7 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
+    gap: 0.7rem;
 }
 .logout-container{
     width: 100%;
@@ -44,11 +45,12 @@
     align-items: center;
 }
 .nav-links{
-    width: 100%;
+    width: 90%;
     height: 10%;
     background-color: dodgerblue;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     text-decoration: none;
     color: #ffffff;
