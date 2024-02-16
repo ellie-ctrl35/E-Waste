@@ -3,6 +3,7 @@ import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
+import Avatar from 'react-avatar';
 import LiveLocation from '../../resources/LiveLocation.png';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
@@ -91,6 +92,7 @@ function UserHome() {
                     </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
+                        <Avatar name="Emmanuel Nyatepe" size="40" round={true} />
                     </div>
                 </div>
                 <div className='mid-div'></div>
