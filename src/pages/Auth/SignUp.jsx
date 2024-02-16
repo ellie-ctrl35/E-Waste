@@ -7,12 +7,13 @@ function SignUp() {
     const [email,setEmail]= useState("");
     const [name,setName]= useState("");
     const [password,setPassword]=useState("");
+    const [phone,setPhone]=useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (e) =>{
         e.preventDefault();
      axios
-     .post("http://localhost:5000/register", { name, email, password })
+     .post("http://localhost:5000/register", { name, email, password,phone })
      .then(res => {
        alert('created')
        navigate('/login')
@@ -30,13 +31,13 @@ function SignUp() {
                 <form onSubmit={handleSubmit}>
                     <h1>Login to EcoHaul</h1>
                     <label>Name</label>
-                    <input type='text' placeholder='Emmanuel Nyatepe'/>
+                    <input type='text' onChange={(e)=>setName(e.target.value)} placeholder='Emmanuel Nyatepe'/>
                     <label>Phone</label>
-                    <input type='tel' pattern='[0-9]{3}-[0-9]{4}-[0-9]{3}' placeholder='023-4554-678'/>
+                    <input type='tel' pattern='[0-9]{3}-[0-9]{4}-[0-9]{3}' onChange={(e)=>setPhone(e.target.value)} placeholder='023-4554-678'/>
                     <label>Email</label>
-                    <input type='text' placeholder='hello@gmail.com'/>
+                    <input type='text' onChange={(e)=>setEmail(e.target.value)} placeholder='hello@gmail.com'/>
                     <label>Password</label>
-                    <input type='password' placeholder='Your Password'/>
+                    <input type='password' onChange={(e)=>setPassword(e.target.value)} placeholder='Your Password'/>
                     <Link to="/login" className='forgot-pwd'>Already Have An Account? Log in</Link>
                     <button type='submit'>Sign up</button>         
                 </form>
