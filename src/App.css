@@ -81,9 +81,23 @@ justify-content: start;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
   padding: 0 1rem;
-
+}
+.texts{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: dodgerblue;
+}
+.request-btn{
+  width: 20%;
+  height: 50%;
+  background: #179A72;
+  border: none;
+  font-family: 'Inter', sans-serif;
 }
 .Mapbox{
   width: 90%;

@@ -103,7 +103,7 @@ function UserHome() {
                     </Link>
                     <div className='mid-div-bottom'>
                        <div className='texts'></div>
-                       <button onClick={sendLocationData} className='request-btn'>Send Location</button>
+                       <button onClick={sendLocationData} className='request-btn'>Make Request</button>
                     </div>
                 </div>
               <div className='Mapbox'>
