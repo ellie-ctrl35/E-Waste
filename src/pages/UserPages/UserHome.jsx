@@ -5,6 +5,7 @@ import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import LiveLocation from '../../resources/LiveLocation.png';
 import searchIcon from '../../resources/searchIcon.png';
+import notification from '../../resources/notification.png';
 
 const center = {
     lat:   5.614818,
@@ -89,7 +90,7 @@ function UserHome() {
                         <input type="text" placeholder="Search for a location" />
                     </div>
                     <div className='icongroup'>
-                        
+                        <img src={notification} alt='notification'/>
                     </div>
                 </div>
                 <div className='mid-div'></div>
