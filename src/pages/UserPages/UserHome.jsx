@@ -102,7 +102,10 @@ function UserHome() {
                      <img src={backBtn}/>
                     </Link>
                     <div className='mid-div-bottom'>
-                       <div className='texts'></div>
+                       <div className='texts'>
+                        <h1>Put in a Haul Request</h1>
+                        <h2>Select a location from map for waste pickup</h2>
+                       </div>
                        <button onClick={sendLocationData} className='request-btn'>Make a Request</button>
                     </div>
                 </div>

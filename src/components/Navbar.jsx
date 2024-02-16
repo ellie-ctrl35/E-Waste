@@ -13,11 +13,11 @@ const  Navbar = (props) =>{
             </div>
             <div className='nav-items'>
                 <ul>
-                    <Link className='nav-links' to='/'>
+                    <Link className='nav-links' to='/userhome'>
                         <img src={homeIcon} className='logout' alt='logout'/>
                         Homepage
                     </Link>
-                    <Link className='nav-links' to='/about'>
+                    <Link className='nav-links' to='/'>
                         <img src={RequestIcon} className='logout' alt='logout'/>
                         Make Request
                     </Link>
