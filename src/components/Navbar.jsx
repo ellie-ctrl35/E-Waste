@@ -11,9 +11,9 @@ const  Navbar = (props) =>{
             </div>
             <div className='nav-items'>
                 <ul>
-                    <Link to='/'>Homepage</Link>
-                    <Link to='/about'>Make Request</Link>
-                    <Link to='/services'>Services</Link>
+                    <Link className='nav-links' to='/'>Homepage</Link>
+                    <Link className='nav-links' to='/about'>Make Request</Link>
+                    <Link className='nav-links' to='/services'>Services</Link>
                 </ul>
             </div>
             <div className='logout-container'>
