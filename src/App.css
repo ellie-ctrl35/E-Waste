@@ -37,6 +37,20 @@
   flex-direction: row;
   align-items: center;
 }
+.search-container img{
+ width: 3%;
+  height: 38%;
+  margin-left: 1.5rem;
+}
+.search-container input {
+  width: 80%;
+  height: 90%;
+  border: none;
+  outline: none;
+  padding-left: 0.5rem;
+  font-size: 1rem;
+color: rgb(214, 207, 207);
+}
 .icongroup{
   width: 15%;
   height: 90%;

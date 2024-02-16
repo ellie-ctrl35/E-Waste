@@ -4,6 +4,7 @@ import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import LiveLocation from '../../resources/LiveLocation.png';
+import searchIcon from '../../resources/searchIcon.png';
 
 const center = {
     lat:   5.614818,
@@ -84,7 +85,7 @@ function UserHome() {
             <div className='right-side'>
                 <div className='top-div'>
                     <div className='search-container'>
-                        <img src="" alt="" />
+                        <img src={searchIcon} alt="search" />
                         <input type="text" placeholder="Search for a location" />
                     </div>
                     <div className='icongroup'>
