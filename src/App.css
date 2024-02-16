@@ -67,18 +67,18 @@
   justify-content: space-between;
 }
 .mid-div-link{
-  margin-left: -95%;
+width: 10%;
+display: flex;
+justify-content: start;
 }
 .mid-div-link img{
   width: 3.6rem;
   height: 1rem;
-  margin-left: 1.5rem;
 }
 .mid-div-bottom{
-  width: 90%;
-  height: 70%;
+  width: 96.6%;
+  height: 80%;
   display: flex;
-  background-color: dodgerblue;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
