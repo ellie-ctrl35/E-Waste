@@ -95,7 +95,11 @@ function UserHome() {
                         <Avatar name="Emmanuel Nyatepe" size="40" round={true} />
                     </div>
                 </div>
-                <div className='mid-div'></div>
+                <div className='mid-div'>
+                    <Link>
+                     <img src={backBtn}/>
+                    </Link>
+                </div>
               <div className='Mapbox'>
                 <GoogleMap
                  options={{
