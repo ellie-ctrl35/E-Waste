@@ -16,7 +16,7 @@
 }
 .logo{
     width: 50%;
-    height: 50%;
+    height: 70%;
     margin-top: 20%;
 }
 
@@ -45,15 +45,14 @@
     align-items: center;
 }
 .nav-links{
-    width: 90%;
+    width: 80%;
     height: 10%;
-    background-color: dodgerblue;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 0.6rem;
     align-items: center;
     text-decoration: none;
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
