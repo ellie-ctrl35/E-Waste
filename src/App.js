@@ -5,21 +5,27 @@ import SignUp from './pages/Auth/SignUp';
 import UserHome from './pages/UserPages/UserHome';
 import AdminHome from './pages/Admin/AdminHome';
 import User from './pages/UserPages/User';
-import { createContext } from 'react';
+import { createContext ,useEffect} from 'react';
+import axios from 'axios';
 
 export const UserContext = createContext();
 
 function App() {
+  useEffect(()=>{
+
+  })
   return (
-    <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<UserHome />} />
-                <Route path="/admin" element={<AdminHome />}/>
-                <Route path="/login" element={<Login />}/>
-                <Route path="/signup" element={<SignUp />}/>
-                <Route path='/userhome' element={<User/>}/>
-            </Routes>
-        </BrowserRouter>
+    <UserContext.Provider value="">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<UserHome />} />
+          <Route path="/admin" element={<AdminHome />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/signup" element={<SignUp />}/>
+          <Route path='/userhome' element={<User/>}/>
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 
