@@ -31,7 +31,7 @@ function User() {
                         <button>Make Request</button>
                     </div>
                     <div className='bottom'>
-                        <h2>Welcome back,<br/> <span>{username}</span></h2>
+                        <h2>Welcome back,<br/> <span>{username}</span><br/><br/><br/>Get a snipshot of your request history</h2>
                     </div>
                 </div>
 
