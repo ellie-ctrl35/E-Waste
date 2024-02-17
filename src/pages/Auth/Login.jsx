@@ -17,7 +17,7 @@ function Login() {
             if (res.data.status === 200) {
                 switch (res.data.role) {
                     case "user":
-                        navigate('/');
+                        navigate('/makerequest');
                         break;
                     case "admin":
                         navigate('/admin');

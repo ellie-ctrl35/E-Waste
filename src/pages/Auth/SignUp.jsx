@@ -16,7 +16,7 @@ function SignUp() {
      .post("http://localhost:5000/api/auth/register", { username, email, password,phone })
      .then(res => {
        if (res.data === "success") {
-         navigate('/login');
+         navigate('/');
        }
      })
      .catch((err) => console.log(err));
@@ -39,7 +39,7 @@ function SignUp() {
                     <input type='text' onChange={(e)=>setEmail(e.target.value)} placeholder='hello@gmail.com'/>
                     <label>Password</label>
                     <input type='password' onChange={(e)=>setPassword(e.target.value)} placeholder='Your Password'/>
-                    <Link to="/login" className='forgot-pwd'>Already Have An Account? Log in</Link>
+                    <Link to="/" className='forgot-pwd'>Already Have An Account? Log in</Link>
                     <button type='submit'>Sign up</button>         
                 </form>
                </div>

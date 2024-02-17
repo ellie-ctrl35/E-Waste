@@ -18,15 +18,16 @@ const [user,setUser] = useState({})
     axios.get('http://localhost:5000/verifyuser')
     .then(user=>{
       setUser(user.data)
+      console.log(user.data)
     })
   },[])
   return (
     <UserContext.Provider value={user}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<UserHome />} />
+          <Route path="/makerequest" element={<UserHome />} />
           <Route path="/admin" element={<AdminHome />}/>
-          <Route path="/login" element={<Login />}/>
+          <Route path="/" element={<Login />}/>
           <Route path="/signup" element={<SignUp />}/>
           <Route path='/userhome' element={<User/>}/>
         </Routes>

@@ -19,7 +19,6 @@ const center = {
 function UserHome() {
     const user = useContext(UserContext);
     const [long, setLong] = useState(0);
-    const [placeName, setPlaceName] = useState('Place Name');
     const username = user.username;    
     const user_id = user.user_id;
    const number = user.phone;       
@@ -33,7 +32,6 @@ function UserHome() {
     const handleMapClick = (event) => {
          setLong(event.latLng.lng());
          setLat(event.latLng.lat());
-         setPlaceName('Place Name');
     //    setLocation({
     //        lat: event.latLng.lat(),
       //      lng: event.latLng.lng(),
@@ -47,7 +45,6 @@ function UserHome() {
             number,
             lat,
             long,
-            placeName,
             user_id
         };
 
@@ -101,7 +98,7 @@ function UserHome() {
                 </div>
                 <div className='mid-div'>
                     <Link className='mid-div-link'>
-                     <img src={backBtn}/>
+                     <img src={backBtn} alt='back'/>
                     </Link>
                     <div className='mid-div-bottom'>
                        <div className='texts'>
