@@ -1,4 +1,4 @@
-import {useMemo,useState} from 'react';
+import {useMemo,useState,useContext} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import backBtn from '../../resources/backBtn.png';
@@ -9,6 +9,7 @@ import Avatar from 'react-avatar';
 import LiveLocation from '../../resources/LiveLocation.png';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
+import { UserContext } from '../../App';
 
 const center = {
     lat:   5.614818,
@@ -16,19 +17,21 @@ const center = {
 }
 
 function UserHome() {
+    const user = useContext(UserContext);
     const [long, setLong] = useState(0);
     const [placeName, setPlaceName] = useState('Place Name');
-    const username = 'username';       // replace with actual username logic
-   const number = '1234567890';       // replace with actual number logic
+    const username = user.username;       // replace with actual username logic
+   const number = user.phone;       // replace with actual number logic
    const [lat, setLat] = useState(0);
    const navigate = useNavigate();
 
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
-       
     }), []);
 
     const handleMapClick = (event) => {
+        const payload = event;
+        console.log (payload);
          setLong(event.latLng.lng());
          setLat(event.latLng.lat());
          setPlaceName('Place Name');
@@ -52,6 +55,7 @@ function UserHome() {
             .then(response => {
                 console.log('Success:', response.data);
                 navigate('/userhome'); // Replace with actual route to user homepag
+                console.log(username,number,lat,long,placeName)
             })
             .catch(error => {
                 console.error('Error:', error);
