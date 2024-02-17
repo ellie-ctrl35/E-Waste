@@ -11,26 +11,17 @@ function Login() {
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) =>{
         e.preventDefault();
-        axios
-        .post("http://localhost:5000/api/auth/login", { email, password })
-        .then(res => {
-            if (res.data.status === 200) {
-                switch (res.data.role) {
-                    case "user":
-                        navigate('/makerequest');
-                        break;
-                    case "admin":
-                        navigate('/admin');
-                        break;
-                    case "driver":
-                        navigate('/userhome');
-                        break;
-                    default:
-                }
+        axios.post('http://localhost:5000/api/auth/login', {email:email, password:password})
+        .then((res)=>{
+            console.log(res.status)
+            if(res.status === 200){
+                navigate('/userhome')
             }
         })
-        .catch((err) => console.log(err));
-    };
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
   
 
     return (

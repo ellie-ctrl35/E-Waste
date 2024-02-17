@@ -17,7 +17,7 @@ const  Navbar = (props) =>{
                         <img src={homeIcon} className='logout' alt='logout'/>
                         Homepage
                     </Link>
-                    <Link className='nav-links' to='/'>
+                    <Link className='nav-links' to='/makerequest'>
                         <img src={RequestIcon} className='logout' alt='logout'/>
                         Make Request
                     </Link>
