@@ -6,6 +6,9 @@ function User() {
         <div className='body'>
             <Navbar />
             
+            <div className='right-side'>
+                
+            </div>
         </div>
     );
 }
