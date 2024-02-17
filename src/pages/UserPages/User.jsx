@@ -25,9 +25,17 @@ function User() {
                         <Avatar name={username} size="40" round={true} />
                     </div>
                 </div>
-                <div className='mid-div'>
-                    
+                <div className='welcome-div'>
+                    <div className='top'></div>
+                    <div></div>
                 </div>
+
+                <div className='history-box'>
+                 <ul>
+                   <div></div>
+                 </ul>
+                </div>
+
             </div>
         </div>
     );
