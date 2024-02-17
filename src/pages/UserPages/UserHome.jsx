@@ -20,8 +20,9 @@ function UserHome() {
     const user = useContext(UserContext);
     const [long, setLong] = useState(0);
     const [placeName, setPlaceName] = useState('Place Name');
-    const username = user.username;       // replace with actual username logic
-   const number = user.phone;       // replace with actual number logic
+    const username = user.username;    
+    const user_id = user.user_id;
+   const number = user.phone;       
    const [lat, setLat] = useState(0);
    const navigate = useNavigate();
 
@@ -46,7 +47,8 @@ function UserHome() {
             number,
             lat,
             long,
-            placeName
+            placeName,
+            user_id
         };
 
         axios.post('http://localhost:5000/api/request', data)
@@ -56,8 +58,7 @@ function UserHome() {
             .catch(error => {
                 console.error('Error:', error);
             });
-
-            console.log(data);
+            console.log(user)
     };
 
     const getUserLocation = () => {
@@ -95,7 +96,7 @@ function UserHome() {
                     </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
-                        <Avatar name="Emmanuel Nyatepe" size="40" round={true} />
+                        <Avatar name={username} size="40" round={true} />
                     </div>
                 </div>
                 <div className='mid-div'>
