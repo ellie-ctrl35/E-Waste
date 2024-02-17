@@ -11,9 +11,13 @@ import axios from 'axios';
 export const UserContext = createContext();
 
 function App() {
+  axios.defaults.withCredentials = true;
   useEffect(()=>{
-
-  })
+    axios.get('http://localhost:5000/api/auth/')
+    .then(user=>{
+      console.log(user)
+    })
+  },[])
   return (
     <UserContext.Provider value="">
       <BrowserRouter>
