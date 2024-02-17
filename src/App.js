@@ -7,7 +7,7 @@ import AdminHome from './pages/Admin/AdminHome';
 import User from './pages/UserPages/User';
 import { useContext } from 'react';
 
-export const UserContext = React.createContext();
+export const UserContext = createContext();
 
 function App() {
   return (
