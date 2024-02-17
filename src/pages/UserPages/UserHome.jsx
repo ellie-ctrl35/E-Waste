@@ -30,8 +30,6 @@ function UserHome() {
     }), []);
 
     const handleMapClick = (event) => {
-        const payload = event;
-        console.log (payload);
          setLong(event.latLng.lng());
          setLat(event.latLng.lat());
          setPlaceName('Place Name');
@@ -53,9 +51,7 @@ function UserHome() {
 
         axios.post('http://localhost:5000/api/request', data)
             .then(response => {
-                console.log('Success:', response.data);
-                navigate('/userhome'); // Replace with actual route to user homepag
-                console.log(username,number,lat,long,placeName)
+                navigate('/userhome'); 
             })
             .catch(error => {
                 console.error('Error:', error);
