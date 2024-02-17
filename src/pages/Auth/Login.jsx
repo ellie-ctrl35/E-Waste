@@ -14,17 +14,20 @@ function Login() {
         axios
         .post("http://localhost:5000/api/auth/login", { email, password })
         .then(res => {
-          if (res.data.status === 200 ){
-              if(res.data.role === "user"){
-                  navigate('/dashboard')
-                  
-              }else if(res.data.role === "admin"){
-                  navigate('/homepage')
-              }
-              else if(res.data.role === "driver"){
-                  navigate('/driver')
-              }
-          }
+            if (res.data.status === 200) {
+                switch (res.data.role) {
+                    case "user":
+                        navigate('/');
+                        break;
+                    case "admin":
+                        navigate('/admin');
+                        break;
+                    case "driver":
+                        navigate('/userhome');
+                        break;
+                    default:
+                }
+            }
         })
         .catch((err) => console.log(err));
     };
@@ -45,7 +48,6 @@ function Login() {
                     <input type='password' onChange={(e)=>setPassword(e.target.value)} placeholder='Your Password'/>
                     <Link className='forgot-pwd'>Forgot Password?</Link>
                     <button type='submit'>Log in</button>
-                    
                 </form>
                </div>
             </div>
