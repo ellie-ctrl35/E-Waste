@@ -27,9 +27,12 @@ function User() {
                 </div>
                 <div className='welcome-div'>
                     <div className='top'>
-                        
+                        <h1>Homepage</h1>
+                        <button>Make Request</button>
                     </div>
-                    <div className='bottom'></div>
+                    <div className='bottom'>
+                        <h2>Welcome,<br/> <span>{username}!</span></h2>
+                    </div>
                 </div>
 
                 <div className='history-box'>
