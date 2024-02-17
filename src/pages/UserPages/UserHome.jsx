@@ -15,16 +15,40 @@ const center = {
     lat:   5.614818,
     lng: -0.205874
 }
+
+
 function UserHome() {
+    const [isModalOpen, setIsModalOpen] = useState(true);
     const user = useContext(UserContext);
-    const[modal, setModal] = useState(false);
     const [type, setType] = useState('');
     const [long, setLong] = useState(0);
     const username = user.username;    
     const user_id = user.user_id;
-   const number = user.phone;       
-   const [lat, setLat] = useState(0);
-   const navigate = useNavigate();
+    const number = user.phone;       
+    const [lat, setLat] = useState(0);
+    const navigate = useNavigate();
+    
+    const WasteTypeModal = () => (
+        <div className="modal"> {/* You'll need to style this accordingly */}
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                handleTypeSelect(e.target.type.value);
+            }}>
+                <label htmlFor="type">Select Waste Type:</label>
+                <select name="type" id="type">
+                    <option value="Plastic">Plastic</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Paper">Paper</option>
+                    {/* Add more options as needed */}
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    );
+   const handleTypeSelect = (selectedType) => {
+    setType(selectedType);
+    setIsModalOpen(false);
+};
 
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
@@ -46,7 +70,8 @@ function UserHome() {
             number,
             lat,
             long,
-            user_id
+            user_id,
+            type
         };
 
         axios.post('http://localhost:5000/api/request', data)
@@ -86,7 +111,13 @@ function UserHome() {
 
     return (
         <div className='App'>
-            <Navbar/>
+        <Navbar/>
+
+{isModalOpen && <WasteTypeModal />}
+
+{/* Main screen content - only show if modal is not open */}
+{!isModalOpen && (
+    < >
             <div className='right-side'>
                 <div className='top-div'>
                     <div className='search-container'>
@@ -130,26 +161,13 @@ function UserHome() {
             <button onClick={getUserLocation} className='location-btn'>
                 <img src={LiveLocation} alt="location" />
             </button>
+    </>
+)}
+
+            
         </div>
     );
 }
 
-function modal(){
-    return(
-        <div className='modal'>
-            <div className='modal-content'>
-                <form>
-                    <options>
-                        <option value="Plastic">Plastic</option>
-                        <option value="Paper">Paper</option>
-                        <option value="Glass">Glass</option>
-                        <option value="Metal">Metal</option>
-                        <option value="Other">Other</option>
-                    </options>
-                </form>
-            </div>
-        </div>
-    );
-}
 
-export default {UserHome,modal};
+export default UserHome;

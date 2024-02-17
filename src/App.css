@@ -210,3 +210,20 @@ border-radius: 0.3rem;
   overflow: scroll;
   scroll-behavior: smooth;
 }
+.modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:transparent;
+  width: 80%;
+  height: 100%;
+}
+.modal form{
+  width: 40%;
+  height: 40%;
+ background-color: white;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border-radius: 1rem;
+}
