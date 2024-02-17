@@ -4,13 +4,29 @@ import Avatar from 'react-avatar';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
 import { UserContext } from '../../App';
-import {useState,useContext} from 'react';
+import {useState,useContext,useEffect} from 'react';
 import axios from 'axios';
 
 function User() {
+    const [requests, setRequests] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
     const user = useContext(UserContext);
     const user_id = user.user_id;
     const username = user.username;
+
+    useEffect(() => {
+        if (user_id) {
+            const fetchRequests = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:5000/api/user-requests/${user_id}`);
+                    setRequests(response.data);
+                } catch (error) {
+                    console.error('Error fetching requests:', error);
+                }
+            };
+
+            fetchRequests();
+        }
+    }, [user_id]);
     return (
         <div className='App'>
             <Navbar />
