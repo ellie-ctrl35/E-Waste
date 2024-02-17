@@ -8,10 +8,11 @@ function Login() {
     const [password, setPassword] = useState();
     const navigate = useNavigate()
 
+    axios.defaults.withCredentials = true;
     const handleSubmit = (e) =>{
         e.preventDefault();
         axios
-        .post("http://localhost:3001/login", { email, password })
+        .post("http://localhost:5000/api/auth/login", { email, password })
         .then(res => {
           if (res.data.status === 200 ){
               if(res.data.role === "user"){
