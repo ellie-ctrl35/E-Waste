@@ -13,7 +13,7 @@ export const UserContext = createContext();
 function App() {
   axios.defaults.withCredentials = true;
   useEffect(()=>{
-    axios.get('http://localhost:5000/api/auth/')
+    axios.get('http://localhost:5000/verifyuser')
     .then(user=>{
       console.log(user)
     })
