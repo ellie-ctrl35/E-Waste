@@ -14,18 +14,16 @@ function User() {
     const username = user.username;
 
     useEffect(() => {
-        if (user_id) {
             const fetchRequests = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/user-requests/${user_id}`);
+                    const response = await axios.post("http://localhost:5000/specific",  user_id);
                     setRequests(response.data);
+                    console.log(response.data);
                 } catch (error) {
                     console.error('Error fetching requests:', error);
                 }
             };
-
             fetchRequests();
-        }
     }, [user_id]);
     return (
         <div className='App'>

@@ -136,6 +136,9 @@ justify-content: start;
   background: #179A72;
   width: 90%;
   height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .welcome-div{
   width: 90%;

@@ -1,4 +1,4 @@
-import {useMemo,useState,useContext} from 'react';
+import {useEffect,useMemo,useState,useContext} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
 import backBtn from '../../resources/backBtn.png';
@@ -15,9 +15,10 @@ const center = {
     lat:   5.614818,
     lng: -0.205874
 }
-
 function UserHome() {
     const user = useContext(UserContext);
+    const[modal, setModal] = useState(false);
+    const [type, setType] = useState('');
     const [long, setLong] = useState(0);
     const username = user.username;    
     const user_id = user.user_id;
@@ -51,6 +52,7 @@ function UserHome() {
         axios.post('http://localhost:5000/api/request', data)
             .then(response => {
                 navigate('/userhome'); 
+                console.log(response.data)
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -132,4 +134,22 @@ function UserHome() {
     );
 }
 
-export default UserHome;
+function modal(){
+    return(
+        <div className='modal'>
+            <div className='modal-content'>
+                <form>
+                    <options>
+                        <option value="Plastic">Plastic</option>
+                        <option value="Paper">Paper</option>
+                        <option value="Glass">Glass</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Other">Other</option>
+                    </options>
+                </form>
+            </div>
+        </div>
+    );
+}
+
+export default {UserHome,modal};
