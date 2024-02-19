@@ -9,22 +9,28 @@ import axios from 'axios';
 
 function User() {
     const [requests, setRequests] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-    const user = useContext(UserContext);
-    const user_id = user.user_id;
+    const  user  = useContext(UserContext);
+    const userId = user?.user_id;
     const username = user.username;
 
     useEffect(() => {
             const fetchRequests = async () => {
+                if (!userId) {
+                    console.log('User ID is not available');
+                    return;
+                  }
                 try {
-                    const response = await axios.post("http://localhost:5000/specific",  user_id);
-                    setRequests(response.data);
-                    console.log(response.data);
+                    axios.get(`http://localhost:5000/specific/:userId${userId}`)
+                    .then(response => {
+                      // Handle the response containing the requests
+                      console.log(response.data);
+                    })
                 } catch (error) {
                     console.error('Error fetching requests:', error);
                 }
             };
             fetchRequests();
-    }, [user_id]);
+    }, [userId]);
     return (
         <div className='App'>
             <Navbar />
