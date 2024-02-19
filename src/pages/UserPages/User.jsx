@@ -20,7 +20,7 @@ function User() {
                     return;
                   }
                 try {
-                    axios.get(`http://localhost:5000/specific/:userId${userId}`)
+                    axios.get(`http://localhost:5000/requests/${userId}`)
                     .then(response => {
                       // Handle the response containing the requests
                       console.log(response.data);
