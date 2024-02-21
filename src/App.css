@@ -232,11 +232,46 @@ justify-content: start;
   height: 100%;
 }
 .backBtn2{
-  width: 10%;
-  height: 10%;
-  background-color: dodgerblue;
+  width: 4%;
+  height: 65%;
+  background-color: white;
   border-radius: 0.5rem;
-  position: absolute;
-  top:10%;
-  left: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mapnav{
+   background:transparent;
+   width: 70%;
+   height: 8%;
+   position: absolute;
+   top:1.5%;
+   align-self: center;
+   left:18%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   align-items: center;
+}
+.location-search{
+  border: none;
+  width: 50%;
+  height: 65%;
+  border-radius: 0.3rem;
+}
+
+.location-search::placeholder {
+  color: #A9A9A9; /* Change the color of the placeholder text */
+  text-align: center; /* Center the placeholder text */
+}
+
+.profile-left{
+  background-color: white;
+  width: 12%;
+  border-radius: 0.5rem;
+  height: 65%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }

@@ -4,6 +4,7 @@ import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import UserHome from './pages/UserPages/UserHome';
 import AdminHome from './pages/Admin/AdminHome';
+import AdminDrive from './pages/Admin/AdminDrive';
 import User from './pages/UserPages/User';
 import { createContext ,useEffect,useState} from 'react';
 import axios from 'axios';
@@ -30,6 +31,7 @@ const [user,setUser] = useState({})
           <Route path="/" element={<Login />}/>
           <Route path="/signup" element={<SignUp />}/>
           <Route path='/userhome' element={<User/>}/>
+          <Route path='/admindriver' element={<AdminDrive/>}/>
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
