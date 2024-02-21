@@ -2,6 +2,7 @@ import {useEffect, useMemo,useState} from 'react';
 import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker,InfoWindow} from '@react-google-maps/api';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 const center = {
     lat:   5.614818,
@@ -44,7 +45,10 @@ function AdminHome() {
 
     return (
         <div className='App'>
-             <div className='Mapbox'>
+            <Link className='backBtn2'>
+                    
+            </Link>
+             <div className='AdminMapbox'>
               <GoogleMap
                zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
                
