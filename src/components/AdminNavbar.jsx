@@ -14,15 +14,15 @@ const AdminNavbar = () => {
     </div>
     <div className='nav-items'>
         <ul>
-            <Link className='nav-links' to='/userhome'>
+            <Link className='nav-links' to=''>
                 <img src={homeIcon} className='logout' alt='logout'/>
                 Dashboard
             </Link>
-            <Link className='nav-links' to='/makerequest'>
+            <Link className='nav-links' to='/admin'>
                 <img src={RequestIcon} className='logout' alt='logout'/>
                 Haul Requests
             </Link>
-            <Link className='nav-links' to='/makerequest'>
+            <Link className='nav-links' to='/admindrive'>
                 <img src={RequestIcon} className='logout' alt='logout'/>
                 My Drivers
             </Link>

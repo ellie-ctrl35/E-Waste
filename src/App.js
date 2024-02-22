@@ -7,7 +7,7 @@ import UserHome from './pages/UserPages/UserHome';
 import AdminHome from './pages/Admin/AdminHome';
 import AdminDrive from './pages/Admin/AdminDrive';
 import User from './pages/UserPages/User';
-import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import your AuthContext
+import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import AuthContext
 
 function App() {
   const { userToken, userInfo, isLogged } = useContext(AuthContext);
@@ -17,7 +17,6 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
       <BrowserRouter>
         <Routes>
           {userToken ? (
@@ -47,7 +46,6 @@ function App() {
           )}
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
   );
 }
 

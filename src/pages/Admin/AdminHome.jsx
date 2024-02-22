@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import Avatar from 'react-avatar';
 import notification from '../../resources/notification.png';
 import backBtn from '../../resources/backIcon.png';
-import { UserContext } from '../../App';
+
 
 const center = {
     lat:   5.614818,
@@ -14,8 +14,6 @@ const center = {
 }
 
 function AdminHome() {
-    const user = useContext(UserContext);
-    const username = user.username;
 
     const [requests,setRequest]= useState([]);
     const [selectedRequest, setSelectedRequest] = useState(null);
@@ -57,14 +55,13 @@ function AdminHome() {
                
             >   
                 <div className='mapnav'>
-                <Link className='backBtn2'>
-                <img src={backBtn} alt='notification'/>
-                    
+                <Link to="/admindriver" className='backBtn2'>
+                  <img src={backBtn} alt='notification'/>  
                 </Link>
                 <input placeholder='Search location' className='location-search'/>
                 <div className='profile-left'>
                     <img src={notification} alt='notification'/>
-                    <Avatar name={username} size="30" round={true} />
+                    <Avatar name='Emmanuel Nyatepe' size="30" round={true} />
                 </div>
                 </div>
                 {requests.map(request => (

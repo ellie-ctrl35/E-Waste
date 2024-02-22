@@ -1,29 +1,27 @@
-import {useState} from 'react';
+import {useState,useContext} from 'react';
 import './Auth.css'
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../../Hooks/InfoContext'; 
 
 function Login() {
+    const { login } = useContext(AuthContext);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const navigate = useNavigate()
 
     axios.defaults.withCredentials = true;
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/api/auth/login', {email:email, password:password})
-        .then((res)=>{
-            console.log(res.status)
-            if(res.status === 200){
-                navigate('/userhome')
-            }
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-    }
+        login(email, password)
+          .then(() => {
+            navigate('/userhome');
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    };
   
-
     return (
         <div className='container'>
             <div className='auth-container'>
@@ -37,7 +35,7 @@ function Login() {
                     <input type='text' onChange={(e)=>setEmail(e.target.value)} placeholder='hello@gmail.com'/>
                     <label>Password</label>
                     <input type='password' onChange={(e)=>setPassword(e.target.value)} placeholder='Your Password'/>
-                    <Link className='forgot-pwd'>Forgot Password?</Link>
+                    <Link to='/signup' className='forgot-pwd'>Forgot Password?</Link>
                     <button type='submit'>Log in</button>
                 </form>
                </div>

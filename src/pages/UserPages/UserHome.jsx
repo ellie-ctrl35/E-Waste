@@ -9,7 +9,6 @@ import Avatar from 'react-avatar';
 import LiveLocation from '../../resources/LiveLocation.png';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
-import { UserContext } from '../../App';
 
 const center = {
     lat:   5.614818,
@@ -19,12 +18,8 @@ const center = {
 
 function UserHome() {
     const [isModalOpen, setIsModalOpen] = useState(true);
-    const user = useContext(UserContext);
     const [type, setType] = useState('');
-    const [long, setLong] = useState(0);
-    const username = user.username;    
-    const user_id = user.user_id;
-    const number = user.phone;       
+    const [long, setLong] = useState(0);     
     const [lat, setLat] = useState(0);
     const navigate = useNavigate();
     
@@ -66,11 +61,8 @@ function UserHome() {
 
    const sendLocationData = () => {
         const data = {
-            username,
-            number,
             lat,
             long,
-            user_id,
             type
         };
 
@@ -82,7 +74,7 @@ function UserHome() {
             .catch(error => {
                 console.error('Error:', error);
             });
-            console.log(user)
+           // console.log(user)
     };
 
     const getUserLocation = () => {
@@ -126,7 +118,7 @@ function UserHome() {
                     </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
-                        <Avatar name={username} size="40" round={true} />
+                        <Avatar name="Emmanuel Nyatepe" size="40" round={true} />
                     </div>
                 </div>
                 <div className='mid-div'>

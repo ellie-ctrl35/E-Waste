@@ -1,8 +1,7 @@
-import {useState} from 'react';
+import {useState,useContext} from 'react';
 import './Auth.css'
 import { Link,useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
+import { AuthContext } from '../../Hooks/InfoContext';
 function SignUp() {
     const [email,setEmail]= useState("");
     const [username,setUserName]= useState("");
@@ -10,18 +9,13 @@ function SignUp() {
     const [phone,setPhone]=useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-     axios
-     .post("http://localhost:5000/api/auth/register", { username, email, password,phone })
-     .then(res => {
-       if (res.data === "success") {
-         navigate('/');
-       }
-     })
-     .catch((err) => console.log(err));
-   }
+    const { register } = useContext(AuthContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    register(username, email, password, phone);
+    navigate('/');
+  };
     return (
         <div className='container'>
             <div className='auth-container'>
@@ -30,7 +24,7 @@ function SignUp() {
                 </h1>
                <div className='form-container'>
                 <form onSubmit={handleSubmit}>
-                    <h1>Login to EcoHaul</h1>
+                    <h1>Signin to EcoHaul</h1>
                     <label>Name</label>
                     <input type='text' onChange={(e)=>setUserName(e.target.value)} placeholder='Emmanuel Nyatepe'/>
                     <label>Phone</label>

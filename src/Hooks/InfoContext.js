@@ -20,9 +20,23 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  const register = (username, email, password, phone) => {
+    return axios
+      .post("http://localhost:5000/api/auth/register", { username, email, password, phone })
+      .then(res => {
+        if (res.status === 200) {
+          // Assuming the server responds with a success message and you want to redirect to login
+          console.log("Registration successful");
+        }
+      })
+      .catch(error => {
+        console.error("Registration error", error);
+      });
+  };
+
   const login = (email, password) => {
     setLoading(true);
-    axios
+    return axios
       .post("http://172.20.10.5:5000/api/auth/login", { email, password })
       .then((res) => {
         const { email, role, token, username } = res.data;
@@ -37,9 +51,8 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         console.error("Login error", error);
-      })
-      .finally(() => {
         setLoading(false);
+        throw error; // Throw the error to be caught in Login.jsx
       });
   };
 
@@ -68,7 +81,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ login, logout, isLoading, userToken, userInfo, userRequests }}
+      value={{ login, logout, isLoading, userToken, userInfo, userRequests,isLogged,register }}
     >
       {children}
     </AuthContext.Provider>

@@ -3,17 +3,14 @@ import'../../App.css';
 import Avatar from 'react-avatar';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
-import { UserContext } from '../../App';
+
 import {useState,useContext,useEffect} from 'react';
 import axios from 'axios';
 
 function User() {
     const [requests, setRequests] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-    const  user  = useContext(UserContext);
-    const userId = user?.user_id;
-    const username = user.username;
 
-    useEffect(() => {
+    {/*useEffect(() => {
             const fetchRequests = async () => {
                 if (!userId) {
                     console.log('User ID is not available');
@@ -30,7 +27,7 @@ function User() {
                 }
             };
             fetchRequests();
-    }, [userId]);
+    }, [userId]);*/}
     return (
         <div className='App'>
             <Navbar />
@@ -42,7 +39,7 @@ function User() {
                     </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
-                        <Avatar name={username} size="40" round={true} />
+                        <Avatar name='Emmanuel Nyatepe' size="40" round={true} />
                     </div>
                 </div>
                 <div className='welcome-div'>
@@ -51,7 +48,8 @@ function User() {
                         <button>Make Request</button>
                     </div>
                     <div className='bottom'>
-                        <h2>Welcome back,<br/> <span>{username}</span><br/><br/><br/>Get a snipshot of your request history</h2>
+                        <h2>Welcome back,<br/> <span>
+                            </span><br/><br/><br/>Get a snipshot of your request history</h2>
                     </div>
                 </div>
 
