@@ -67,7 +67,7 @@ function AdminHome() {
                 </div>
                 </div>
 
-                <div style={{width:"3%",height:"6%",background:"white",position:"absolute",top:"80%",left:"2%"}} onClick={()=>logout()}></div>
+                <div style={{width:"3%",height:"6%",background:"#1C3530",position:"absolute",top:"80%",left:"2%"}} onClick={()=>logout()}></div>
                 {requests.map(request => (
                     <Marker
                         key={request._id} // Replace 'id' with the actual unique identifier of the request

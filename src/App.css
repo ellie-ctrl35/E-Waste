@@ -264,7 +264,6 @@ justify-content: start;
   text-align: center; /* Center the placeholder text */
   font-family: "Inter";
 }
-
 .profile-left{
   background-color: white;
   width: 12%;
@@ -274,4 +273,67 @@ justify-content: start;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+}
+.comNamediv{
+  width: 90%;
+  height:8%;
+  margin-top: 1%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.comtxt{
+  color: black;
+  font-family: 'Inter';
+  font-size: 1.5rem;
+  margin-left: 2%;
+  background-color: white;
+  padding: 0.7rem;
+  width: 20%;
+}
+.profileContainer{
+  height: 90%;
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.bigdiv{
+  width: 90%;
+  height: 86%;
+  margin-top: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.leftbigdiv{
+  background-color: dodgerblue;
+  width: 60%;
+  height: 95%;
+}
+.bigdiv form{
+  background-color: white;
+  width: 35%;
+  height: 95%;
+  display:flex;
+  flex-direction: column;
+  border-radius: 0.3rem;
+}
+.labelS{
+  text-align: center;
+  color: #179A72;
+  font-size: 0.9rem;
+  font-family: 'Inter';
+  font-weight: 700;
+}
+.labelH{
+  margin-top: 7%;
+  color: #179A72;
+  font-size: 0.7rem;
+  font-family: 'Inter';
+  margin-left:7%;
+  font-weight: 700;
 }
