@@ -1,4 +1,5 @@
-import { BrowserRouter,Routes,Route } from 'react-router-dom'; 
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'; 
 import './App.css';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
@@ -6,35 +7,47 @@ import UserHome from './pages/UserPages/UserHome';
 import AdminHome from './pages/Admin/AdminHome';
 import AdminDrive from './pages/Admin/AdminDrive';
 import User from './pages/UserPages/User';
-import { createContext ,useEffect,useState} from 'react';
-import axios from 'axios';
-
-export const UserContext = createContext();
+import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import your AuthContext
 
 function App() {
-const [user,setUser] = useState({})
+  const { userToken, userInfo, isLogged } = useContext(AuthContext);
 
-  axios.defaults.withCredentials = true;
-  useEffect(()=>{
-    axios.get('http://localhost:5000/verifyuser')
-    .then(user=>{
-      setUser(user.data)
-      console.log(user.data)
-    })
-  },[])
+  useEffect(() => {
+    isLogged(); // Check if the user is logged in when the app loads
+  }, []);
+
   return (
-    <UserContext.Provider value={user}>
+    <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/makerequest" element={<UserHome />} />
-          <Route path="/admin" element={<AdminHome />}/>
-          <Route path="/" element={<Login />}/>
-          <Route path="/signup" element={<SignUp />}/>
-          <Route path='/userhome' element={<User/>}/>
-          <Route path='/admindriver' element={<AdminDrive/>}/>
+          {userToken ? (
+            // If the user is logged in
+            userInfo.role === 'user' ? (
+              // If the user is a regular user
+              <>
+                <Route path="/makerequest" element={<UserHome />} />
+                <Route path="/userhome" element={<User />} />
+                <Route path="/" element={<Navigate replace to="/userhome" />} />
+              </>
+            ) : (
+              // If the user is an admin
+              <>
+                <Route path="/admin" element={<AdminHome />} />
+                <Route path="/admindriver" element={<AdminDrive />} />
+                <Route path="/" element={<Navigate replace to="/admin" />} />
+              </>
+            )
+          ) : (
+            // If the user is not logged in
+            <>
+              <Route path="/" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="*" element={<Navigate replace to="/" />} />
+            </>
+          )}
         </Routes>
       </BrowserRouter>
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }
 
