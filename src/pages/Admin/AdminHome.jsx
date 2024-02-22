@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import Avatar from 'react-avatar';
 import notification from '../../resources/notification.png';
 import backBtn from '../../resources/backIcon.png';
+import { AuthContext } from '../../Hooks/InfoContext';
 
 
 const center = {
@@ -14,9 +15,10 @@ const center = {
 }
 
 function AdminHome() {
-
+    const {logout ,userInfo}= useContext(AuthContext)
     const [requests,setRequest]= useState([]);
     const [selectedRequest, setSelectedRequest] = useState(null);
+    const username = userInfo.username;
 
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
@@ -61,9 +63,11 @@ function AdminHome() {
                 <input placeholder='Search location' className='location-search'/>
                 <div className='profile-left'>
                     <img src={notification} alt='notification'/>
-                    <Avatar name='Emmanuel Nyatepe' size="30" round={true} />
+                    <Avatar name={username} size="30" round={true} />
                 </div>
                 </div>
+
+                <div style={{width:"3%",height:"6%",background:"white",position:"absolute",top:"80%",left:"2%"}} onClick={()=>logout()}></div>
                 {requests.map(request => (
                     <Marker
                         key={request._id} // Replace 'id' with the actual unique identifier of the request

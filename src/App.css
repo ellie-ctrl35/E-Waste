@@ -259,10 +259,10 @@ justify-content: start;
   height: 65%;
   border-radius: 0.3rem;
 }
-
 .location-search::placeholder {
   color: #A9A9A9; /* Change the color of the placeholder text */
   text-align: center; /* Center the placeholder text */
+  font-family: "Inter";
 }
 
 .profile-left{
