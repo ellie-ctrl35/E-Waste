@@ -20,9 +20,9 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-  const register = (username, email, password, phone) => {
+  const register = (username, email, password, phone,role,comAssociate) => {
     return axios
-      .post("http://localhost:5000/api/auth/register", { username, email, password, phone })
+      .post("http://localhost:5000/api/auth/register", { username, email, password, phone,role,comAssociate })
       .then(res => {
         if (res.status === 200) {
           // Assuming the server responds with a success message and you want to redirect to login

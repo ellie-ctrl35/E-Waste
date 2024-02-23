@@ -328,12 +328,27 @@ justify-content: start;
   font-size: 0.9rem;
   font-family: 'Inter';
   font-weight: 700;
+  margin-bottom: 7%;
 }
 .labelH{
-  margin-top: 7%;
   color: #179A72;
   font-size: 0.7rem;
   font-family: 'Inter';
   margin-left:7%;
   font-weight: 700;
+}
+.driverInput{
+  width: 80%;
+  height: 4.5%;
+  background-color: #ECECEC;
+  outline: none;
+  border: none;
+  align-self: center;
+}
+.driverBtn{
+  background-color: #179A72;
+  width: 82%;
+  height: 7%;
+  border-radius: 0.3rem;
+  align-self: center;
 }
