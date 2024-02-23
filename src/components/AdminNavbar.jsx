@@ -14,7 +14,7 @@ const AdminNavbar = () => {
     </div>
     <div className='nav-items'>
         <ul>
-            <Link className='nav-links' to=''>
+            <Link className='nav-links' to='/admindash'>
                 <img src={homeIcon} className='logout' alt='logout'/>
                 Dashboard
             </Link>

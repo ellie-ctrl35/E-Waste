@@ -7,6 +7,7 @@ import UserHome from './pages/UserPages/UserHome';
 import AdminHome from './pages/Admin/AdminHome';
 import AdminDrive from './pages/Admin/AdminDrive';
 import User from './pages/UserPages/User';
+import  AdminDash  from './pages/Admin/AdminDash';
 import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import AuthContext
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
               <>
                 <Route path="/admin" element={<AdminHome />} />
                 <Route path="/admindriver" element={<AdminDrive />} />
+                <Route path='/admindash' element={<AdminDash/>}/>
                 <Route path="/" element={<Navigate replace to="/admin" />} />
               </>
             )
