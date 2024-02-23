@@ -13,11 +13,15 @@ const AdminDrive = () => {
   const [username,setUsername]= useState('');
   const [phone,setPhone]=useState("");
   const [password,setPassword]=useState('');
-  const comAssociate = username;
+  const comAssociate = Username;
 
   const AddNewDriver = (e) =>{
     e.preventDefault();
     register(username, email, password, phone,role,comAssociate);
+    setEmail("");
+    setUsername("");
+    setPhone("");
+    setPassword("");
   }
 
   return (
