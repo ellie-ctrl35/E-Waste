@@ -14,6 +14,7 @@ const AdminDrive = () => {
   const [username,setUsername]= useState('');
   const [phone,setPhone]=useState("");
   const [password,setPassword]=useState('');
+  const [drivers,setDrivers]=useState([]); // Assuming drivers is an array of objects with a username field
   const comAssociate = Username;
 
   const AddNewDriver = (e) =>{
@@ -24,18 +25,19 @@ const AdminDrive = () => {
     setPhone("");
     setPassword("");
   }
-  
+ 
   useEffect(()=>{
     const getDriversCount = async () =>{
       console.log(comAssociate)
       await axios.post('http://localhost:5000/api/drivers',{comAssociate})
       .then((res)=>{
         console.log(res.data)
+        setDrivers(res.data)
       })
     }
 
     getDriversCount();
-  })
+  },[comAssociate])
 
   return (
     <div className='App'>
@@ -50,7 +52,20 @@ const AdminDrive = () => {
         </div>
         <div className='bigdiv'>
           <div className='leftbigdiv'>
-
+            <div className='countdiv'>
+              <h1>{drivers.length}</h1>
+            </div>
+            <div className='driverstb'>
+              <ul>
+                {
+                  drivers.map((driver)=>{
+                    return(
+                      <li>{driver.username}</li>
+                    )
+                  })
+                }
+              </ul>
+            </div>
           </div>
           <form onSubmit={AddNewDriver}>
             <label className='labelS'>Add a driver to your company</label>
