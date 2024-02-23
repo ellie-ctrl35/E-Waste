@@ -1,9 +1,10 @@
-import {useState,useContext} from 'react'
+import {useState,useContext,useEffect} from 'react'
 import'../../App.css';
 import AdminNavbar from '../../components/AdminNavbar';
 import notification from '../../resources/notification.png'
 import Avatar from 'react-avatar'
 import { AuthContext } from '../../Hooks/InfoContext';
+import axios from 'axios';
 
 const AdminDrive = () => {
   const {register,userInfo}= useContext(AuthContext);
@@ -23,6 +24,18 @@ const AdminDrive = () => {
     setPhone("");
     setPassword("");
   }
+  
+  useEffect(()=>{
+    const getDriversCount = async () =>{
+      console.log(comAssociate)
+      await axios.post('http://localhost:5000/api/drivers',{comAssociate})
+      .then((res)=>{
+        console.log(res.data)
+      })
+    }
+
+    getDriversCount();
+  })
 
   return (
     <div className='App'>
