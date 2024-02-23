@@ -5,7 +5,12 @@ import logout from '../resources/logout.png'
 import homeIcon from '../resources/homeIcon.png'
 import RequestIcon from '../resources/RequestIcon.png'
 import {Link} from 'react-router-dom'
+import { AuthContext } from '../Hooks/InfoContext';
+import { useContext } from 'react';
 const  Navbar = (props) =>{
+
+    
+    const {logout}= useContext(AuthContext)
     return (
         <div className='navbar'>
             <div className='logo-container'>
@@ -24,7 +29,10 @@ const  Navbar = (props) =>{
                 </ul>
             </div>
             <div className='logout-container'>
-               <Link></Link>
+            <Link  onClick={()=>logout()}>
+       <img src={RequestIcon} className='logout' alt='logout'/>
+       Logout
+       </Link>
             </div>
         </div>
     );
