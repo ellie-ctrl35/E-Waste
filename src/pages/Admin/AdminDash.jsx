@@ -30,18 +30,18 @@ import AdminNavbar from '../../components/AdminNavbar';
 
 // Define the data and renderActiveShape function here or import them
 const data = [
-    { name: 'JANUARY', value: 400 },
-    { name: 'FEBUARY', value: 300 },
-    { name: 'MARCH', value: 300 },
-    { name: 'APRIL', value: 200 },
-    { name: 'MAY', value: 200 },
-    { name: 'JUNE', value: 200 },
-    { name: 'JULY', value: 200 },
-    { name: 'AUGUST', value: 200 },
-    { name: 'SEPTEMBER', value: 200 },
-    { name: 'OCTOBER', value: 200 },
-    { name: 'NOVEMBER', value: 200 },
-    { name: 'DECEMBER', value: 200 },
+    { name: 'JANUARY', value: 1 },
+    // { name: 'FEBUARY', value: 300 },
+    // { name: 'MARCH', value: 300 },
+    // { name: 'APRIL', value: 200 },
+    // { name: 'MAY', value: 200 },
+    // { name: 'JUNE', value: 200 },
+    // { name: 'JULY', value: 200 },
+    // { name: 'AUGUST', value: 200 },
+    // { name: 'SEPTEMBER', value: 200 },
+    // { name: 'OCTOBER', value: 200 },
+    // { name: 'NOVEMBER', value: 200 },
+    // { name: 'DECEMBER', value: 200 },
   ];
 
   const CustomizedAxisTick = ({ x, y, stroke, payload }) => {
@@ -54,36 +54,36 @@ const data = [
     );
 };
   const dataa = [
-    { name: '1', uv: 300,  },
-    { name: '2', uv: 145,  },
-    { name: '3', uv: 100,  },
-    { name: '4', uv: 8,  },
-    { name: '5', uv: 100,  },
-    { name: '6', uv: 9,  },
-    { name: '7', uv: 53,  },
-    { name: '8', uv: 252, },
-    { name: '9', uv: 79,  },
-    { name: '10', uv: 294,  },
-    { name: '12', uv: 43, },
-    { name: '13', uv: 74, },
-    { name: '14', uv: 71,  },
-    { name: '15', uv: 117, },
-    { name: '16', uv: 186,  },
-    { name: '17', uv: 16,  },
-    { name: '18', uv: 125,  },
-    { name: '19', uv: 222,  },
-    { name: '20', uv: 372, },
-    { name: '21', uv: 182,  },
-    { name: '22', uv: 164,  },
-    { name: '23', uv: 316,  },
-    { name: '24', uv: 131,  },
-    { name: '25', uv: 291, },
-    { name: '26', uv: 47,  },
-    { name: '27', uv: 415,  },
-    { name: '28', uv: 182, },
-    { name: '29', uv: 93,  },
-    { name: '30', uv: 99, },
-    { name: '31', uv: 52, },
+    { name: '1', uv: 0,  },
+    // { name: '2', uv: 145,  },
+    // { name: '3', uv: 100,  },
+    // { name: '4', uv: 8,  },
+    // { name: '5', uv: 100,  },
+    // { name: '6', uv: 9,  },
+    // { name: '7', uv: 53,  },
+    // { name: '8', uv: 252, },
+    // { name: '9', uv: 79,  },
+    // { name: '10', uv: 294,  },
+    // { name: '12', uv: 43, },
+    // { name: '13', uv: 74, },
+    // { name: '14', uv: 71,  },
+    // { name: '15', uv: 117, },
+    // { name: '16', uv: 186,  },
+    // { name: '17', uv: 16,  },
+    // { name: '18', uv: 125,  },
+    // { name: '19', uv: 222,  },
+    // { name: '20', uv: 372, },
+    // { name: '21', uv: 182,  },
+    // { name: '22', uv: 164,  },
+    // { name: '23', uv: 316,  },
+    // { name: '24', uv: 131,  },
+    // { name: '25', uv: 291, },
+    // { name: '26', uv: 47,  },
+    // { name: '27', uv: 415,  },
+    // { name: '28', uv: 182, },
+    // { name: '29', uv: 93,  },
+    // { name: '30', uv: 99, },
+    // { name: '31', uv: 52, },
   
   ];
   const COLORS = [
@@ -133,8 +133,8 @@ const renderActiveShape = (props) => {
         cy={cy}
         startAngle={startAngle}
         endAngle={endAngle}
-        innerRadius={outerRadius + 500}
-        outerRadius={outerRadius + 30}
+        innerRadius={outerRadius + 6000}
+        outerRadius={outerRadius + 3000}
         fill={fill}
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
