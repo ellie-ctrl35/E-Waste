@@ -9,7 +9,7 @@ const BarChart = () => {
   const [requestData, setRequestData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://172.20.10.5:5000/api/request/allrequests')
+    axios.get('http://localhost:5000/api/request/allrequests')
       .then(response => {
         const processedData = processRequestData(response.data);
         setRequestData(processedData);

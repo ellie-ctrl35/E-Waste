@@ -10,7 +10,7 @@ const DoughnutChart = () => {
   const [monthlyData, setMonthlyData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/requests') // Adjust this to your endpoint
+    axios.get('http://localhost:5000/api/request/allrequests') // Adjust this to your endpoint
       .then(response => {
         const processedData = processMonthlyData(response.data);
         setMonthlyData(processedData);
@@ -30,7 +30,6 @@ const DoughnutChart = () => {
   };
 
   const data = {
-    labels: moment.months(),
     datasets: [
       {
         label: 'Monthly Requests',

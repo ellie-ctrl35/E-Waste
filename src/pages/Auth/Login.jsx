@@ -14,7 +14,7 @@ function Login() {
         e.preventDefault();
         Login(email, password)
           .then(() => {
-            navigate('/makerequest'); // Navigate to the desired route after successful login
+            navigate('/'); // Navigate to the desired route after successful login
           })
           .catch(err => {
             console.log('Login error:', err);
