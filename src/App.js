@@ -13,8 +13,8 @@ import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import AuthC
 function App() {
   const { userToken, userInfo, isLogged } = useContext(AuthContext);
 
-  useEffect(() => {
-    isLogged(); // Check if the user is logged in when the app loads
+  useEffect(() => { 
+    isLogged(); 
   }, []);
 
   return (

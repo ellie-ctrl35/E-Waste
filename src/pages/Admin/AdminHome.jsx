@@ -48,7 +48,9 @@ function AdminHome() {
     const handleMarkerClick = (request) => {
         setSelectedRequest(request);
     };
-
+    const greenMarkerIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+    const redMarkerIcon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+    
     return (
         <div className='App' style={{position:"relative"}}>
              <div className='AdminMapbox'>
@@ -69,18 +71,23 @@ function AdminHome() {
 
                 <div style={{width:"3%",height:"6%",background:"#1C3530",position:"absolute",top:"80%",left:"2%"}} onClick={()=>logout()}></div>
                 {requests.map(request => (
-                    <Marker
-                        key={request._id} // Replace 'id' with the actual unique identifier of the request
-                        position={{ lat: request.lat, lng: request.long }}
-                        onClick={() => handleMarkerClick(request)}
-                    />
-                ))}
+    <Marker
+        key={request._id}
+        position={{ lat: request.lat, lng: request.long }}
+        onClick={() => handleMarkerClick(request)}
+        icon={request.status === "completed" ? greenMarkerIcon : redMarkerIcon}
+    />
+))}
+
                 
                 {selectedRequest && (
                         <InfoWindow 
                         style={{width:"40%",height:"40%"}}
                             position={{ lat: selectedRequest.lat, lng: selectedRequest.long }}
                             onCloseClick={() => setSelectedRequest(null)}
+                            icon={'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'} // URL to your custom marker image
+                            
+                            
                         >
                             <div className='infobox'>
                                 <h3>{selectedRequest.username}</h3>
