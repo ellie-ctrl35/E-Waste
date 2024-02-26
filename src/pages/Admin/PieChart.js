@@ -1,42 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
+import axios from 'axios';
+import moment from 'moment';
 
 Chart.register(ArcElement, Tooltip, Legend);
 
-const PieChart = () => {
+const DoughnutChart = () => {
+  const [monthlyData, setMonthlyData] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/requests') // Adjust this to your endpoint
+      .then(response => {
+        const processedData = processMonthlyData(response.data);
+        setMonthlyData(processedData);
+      })
+      .catch(error => console.error('Error fetching requests:', error));
+  }, []);
+
+  // Function to process data for monthly count
+  const processMonthlyData = (data) => {
+    const months = [...Array(12)].map((_, i) => moment().month(i).format('MMMM'));
+    const monthlyCount = months.map(month => {
+      return data.filter(request => 
+        moment(request.createdAt).format('MMMM') === month
+      ).length;
+    });
+    return monthlyCount;
+  };
+
   const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: moment.months(),
     datasets: [
       {
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Monthly Requests',
+        data: monthlyData,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          // Add colors for each month
+          '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', 
+          '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
         ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
+        hoverBackgroundColor: [
+          // Slightly darker colors for hover state
+        ]
+      }
+    ]
   };
 
-  const options = {
-    cutout: '50%' // Adjust this value for different doughnut thicknesses
-  };
-
-  return <Doughnut data={data} options={options} />;
+  return <Doughnut data={data} />;
 };
 
-export default PieChart;
+export default DoughnutChart;

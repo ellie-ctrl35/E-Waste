@@ -368,6 +368,7 @@ justify-content: start;
   height: 42%;
   display: flex;
   background-color: white;
+  border-radius: 0.5rem;
 }
 .dashbottom{
   width: 90%;
