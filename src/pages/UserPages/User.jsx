@@ -3,12 +3,14 @@ import'../../App.css';
 import Avatar from 'react-avatar';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
-
+import { AuthContext } from '../../Hooks/InfoContext';
 import {useState,useContext,useEffect} from 'react';
 import axios from 'axios';
 
 function User() {
     const [requests, setRequests] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    const { userInfo } = useContext(AuthContext);
+    const username = userInfo.username;
 
     {/*useEffect(() => {
             const fetchRequests = async () => {
@@ -39,7 +41,7 @@ function User() {
                     </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
-                        <Avatar name='Emmanuel Nyatepe' size="40" round={true} />
+                        <Avatar name={username} size="40" round={true} />
                     </div>
                 </div>
                 <div className='welcome-div'>

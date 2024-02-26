@@ -9,63 +9,68 @@ export const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(null);
   const [userRequests, setUserRequests] = useState([]);
 
-  const fetchUserRequests = (email) => {
-    axios
-      .get(`http://172.20.10.5:5000/api/request/userhistory?author=${email}`)
-      .then((res) => {
-        setUserRequests(res.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching user requests", error);
-      });
-  };
-
-  const register = (username, email, password, phone,role,comAssociate) => {
-    return axios
-      .post("http://localhost:5000/api/auth/register", { username, email, password, phone,role,comAssociate })
-      .then(res => {
-        if (res.status === 200) {
-          // Assuming the server responds with a success message and you want to redirect to login
-          console.log("Registration successful");
-        }
-      })
-      .catch(error => {
-        console.error("Registration error", error);
-      });
-  };
-
-  const login = (email, password) => {
-    setLoading(true);
-    return axios
-      .post("http://172.20.10.5:5000/api/auth/login", { email, password })
+  const Login = (email, password) => {
+    return axios.post("http://localhost:5000/api/auth/login", { email, password })
       .then((res) => {
         const { email, role, token, username } = res.data;
-        const userInfo = { email, role, username };
-        setUserInfo(userInfo);
+        const UserInfo = { email, role, username };
+        console.log(UserInfo);
+        setUserInfo(UserInfo);
         setUserToken(token);
-        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        localStorage.setItem("userInfo", JSON.stringify(UserInfo));
         localStorage.setItem("userToken", token);
-        if (email) {
-          fetchUserRequests(email);
-        }
+        fetchUserRequests(email);
       })
       .catch((error) => {
         console.error("Login error", error);
         setLoading(false);
-        throw error; // Throw the error to be caught in Login.jsx
+        throw error;
       });
   };
+  
+
+  // Helper function to clear user info and token
+  const clearUserInfo = () => {
+    setUserToken(null);
+    setUserInfo(null);
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("userToken");
+  };
+
+  const fetchUserRequests = (email) => {
+    axios.get(`http://172.20.10.5:5000/api/request/userhistory?author=${email}`)
+      .then(res => setUserRequests(res.data))
+      .catch(error => console.error("Error fetching user requests", error));
+  };
+
+  const register = (username, email, password, phone, role, comAssociate) => {
+    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate })
+      .then(res => res.status === 200 && console.log("Registration successful"))
+      .catch(error => console.error("Registration error", error));
+  };
+
+ {/* const login = (email, password) => {
+    return axios.post("http://localhost:5000/api/auth/login", { email, password })
+      .then((res) => {
+        const { email, role, token, username } = res.data;
+        setInfo({ email, role, username });
+        setToken(token);
+        fetchUserRequests(email);
+      })
+      .catch(error => {
+        console.error("Login error", error);
+        setLoading(false);
+        throw error;
+      });
+  };*/}
 
   const logout = () => {
     setLoading(true);
-    setUserToken(null);
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("userToken");
+    clearUserInfo();
     setLoading(false);
   };
 
   const isLogged = () => {
-    setLoading(true);
     const storedUserInfo = localStorage.getItem("userInfo");
     const storedToken = localStorage.getItem("userToken");
     if (storedUserInfo && storedToken) {
@@ -75,14 +80,10 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    isLogged();
-  }, []);
+useEffect(() =>{ isLogged()}, []);
 
   return (
-    <AuthContext.Provider
-      value={{ login, logout, isLoading, userToken, userInfo, userRequests,isLogged,register }}
-    >
+    <AuthContext.Provider value={{ Login, logout, isLoading, userToken, userInfo, userRequests, register,isLogged}}>
       {children}
     </AuthContext.Provider>
   );

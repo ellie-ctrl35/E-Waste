@@ -8,8 +8,6 @@ import {Link} from 'react-router-dom'
 import { AuthContext } from '../Hooks/InfoContext';
 import { useContext } from 'react';
 const  Navbar = (props) =>{
-
-    
     const {logout}= useContext(AuthContext)
     return (
         <div className='navbar'>

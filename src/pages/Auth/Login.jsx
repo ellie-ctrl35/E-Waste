@@ -5,23 +5,24 @@ import axios from 'axios';
 import { AuthContext } from '../../Hooks/InfoContext'; 
 
 function Login() {
-    const { login } = useContext(AuthContext);
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const { Login } = useContext(AuthContext); 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
-    axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        login(email, password)
+        Login(email, password)
           .then(() => {
-            navigate('/userhome');
+            navigate('/makerequest'); // Navigate to the desired route after successful login
           })
-          .catch((err) => {
-            console.log(err);
+          .catch(err => {
+            console.log('Login error:', err);
           });
-    };
-  
+      };
+      
+    
+    
     return (
         <div className='container'>
             <div className='auth-container'>

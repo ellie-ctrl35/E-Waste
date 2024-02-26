@@ -9,6 +9,7 @@ import Avatar from 'react-avatar';
 import LiveLocation from '../../resources/LiveLocation.png';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
+import { AuthContext } from '../../Hooks/InfoContext';
 
 const center = {
     lat:   5.614818,
@@ -17,6 +18,8 @@ const center = {
 
 
 function UserHome() {
+    const { userInfo } = useContext(AuthContext);
+    const username = userInfo.username; 
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [type, setType] = useState('');
     const [long, setLong] = useState(0);     
@@ -118,7 +121,7 @@ function UserHome() {
                     </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
-                        <Avatar name="Emmanuel Nyatepe" size="40" round={true} />
+                        <Avatar name={username} size="40" round={true} />
                     </div>
                 </div>
                 <div className='mid-div'>
