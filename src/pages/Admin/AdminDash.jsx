@@ -7,7 +7,7 @@ import notification from '../../resources/notification.png';
 import { AuthContext } from '../../Hooks/InfoContext';
 import AdminNavbar from '../../components/AdminNavbar';
 import PieChart from './PieChart';
-
+import BarChart from './BarChart';
 
 
 function AdminDash() {
@@ -20,8 +20,26 @@ function AdminDash() {
         <div className='App'>
             <AdminNavbar />
             <div className='right-side'>
+              <div className='dashtop'>
+                <img src={notification} alt='notification'/>
+                <Avatar round size={35} name={Username}/>
+              </div>
+              <div className='barchartdiv'>
+                <BarChart/>
+              </div>
+              <div className='dashbottom'>
+                <div className='bottomdash-left'></div>
+                <div className='doughnut-div'>
+                  <div className='doughnut-txt'>
+
+                  </div>
+                  <div className='doughnut'>
+                  <PieChart/>
+                  </div>
+                </div>
+              </div>
              {/* <div style={{height:'20%',width:"20%"}}>
-              <PieChart/>
+              
     </div>*/}
  
             </div>
