@@ -1,6 +1,6 @@
 import {useEffect,useMemo,useState,useContext} from 'react';
 import'../../App.css';
-import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
+import {useJsApiLoader,GoogleMap,Marker,Autocomplete} from '@react-google-maps/api';
 import backBtn from '../../resources/backBtn.png';
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -21,6 +21,9 @@ function UserHome() {
     const { userInfo } = useContext(AuthContext);
     const username = userInfo.username; 
     const [isModalOpen, setIsModalOpen] = useState(true);
+    const [searchedLocation, setSearchedLocation] = useState(null);
+    const [autocompleteInstance, setAutocompleteInstance] = useState(null);
+
     const [type, setType] = useState('');
     const [long, setLong] = useState(0);     
     const [lat, setLat] = useState(0);
@@ -49,7 +52,7 @@ function UserHome() {
 };
 
     const loaderOptions = useMemo(() => ({
-        googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
+        googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4" ,libraries: ['places'],
     }), []);
 
     const handleMapClick = (event) => {
@@ -79,6 +82,18 @@ function UserHome() {
             });
            // console.log(user)
     };
+    const onPlaceSelected = () => {
+        if (autocompleteInstance) {
+            const place = autocompleteInstance.getPlace();
+            const lat = place.geometry.location.lat();
+            const lng = place.geometry.location.lng();
+
+            setSearchedLocation({ lat, lng });
+            setLat(lat);
+            setLong(lng);
+        }
+    };
+
 
     const getUserLocation = () => {
         try{
@@ -117,7 +132,15 @@ function UserHome() {
                 <div className='top-div'>
                     <div className='search-container'>
                         <img src={searchIcon} alt="search" />
-                        <input type="text" placeholder="Search for a location" />
+                        <Autocomplete
+                        onLoad={(autocomplete) => {
+                            setAutocompleteInstance(autocomplete);
+                        }}
+                        onPlaceChanged={onPlaceSelected}
+                    >
+                              <input type="text" placeholder="Search for a location" />
+                              </Autocomplete>
+
                     </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
@@ -145,11 +168,15 @@ function UserHome() {
                  zoom={11.5} center={center} mapContainerStyle={{width:"100%",height:"100%",borderRadius:"0.6rem"}}
                  onDblClick={handleMapClick}
                 >
-                  {
-                    lat !== 0 && long !== 0 && (
-                        <Marker position={{lat, lng: long}} />
-                    )
-                  }
+                 {/* Marker for selected search location */}
+                 {searchedLocation && (
+                            <Marker position={searchedLocation} />
+                        )}
+
+                        {/* Marker for clicked location */}
+                        {lat !== 0 && long !== 0 && (
+                            <Marker position={{ lat, lng: long }} />
+                        )}
                 </GoogleMap>
                </div>
             </div>
