@@ -8,7 +8,6 @@ import notification from '../../resources/notification.png';
 import backBtn from '../../resources/backIcon.png';
 import { AuthContext } from '../../Hooks/InfoContext';
 
-
 const center = {
     lat:   5.614818,
     lng: -0.205874
@@ -54,10 +53,7 @@ function AdminHome() {
     return (
         <div className='App' style={{position:"relative"}}>
              <div className='AdminMapbox'>
-              <GoogleMap
-               zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
-               
-            >   
+              <GoogleMap zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}} >   
                 <div className='mapnav'>
                 <Link to="/admindriver" className='backBtn2'>
                   <img src={backBtn} alt='notification'/>  
@@ -82,17 +78,17 @@ function AdminHome() {
                 
                 {selectedRequest && (
                         <InfoWindow 
-                        style={{width:"40%",height:"40%"}}
+                       
                             position={{ lat: selectedRequest.lat, lng: selectedRequest.long }}
                             onCloseClick={() => setSelectedRequest(null)}
                             icon={'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'} // URL to your custom marker image
                             
                             
                         >
-                            <div className='infobox'>
-                                <h3>{selectedRequest.username}</h3>
-                                <p>Date Created: {selectedRequest.dateCreated}</p>
-                                <p>Status: {selectedRequest.status}</p>
+                            <div style={{background:"dodgerblue",width:"100%",height:"100%"}} >
+                                <h3 style={{color:'black'}}>{selectedRequest.username}</h3>
+                                <p style={{color:'black'}}>Date Created: {selectedRequest.dateCreated}</p>
+                                <p style={{color:'black'}}>Status: {selectedRequest.status}</p>
                             </div>
                         </InfoWindow>
                 )}

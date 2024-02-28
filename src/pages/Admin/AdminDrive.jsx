@@ -1,10 +1,18 @@
-import {useState,useContext,useEffect} from 'react'
+import {useState,useContext,useEffect,useMemo} from 'react'
 import'../../App.css';
 import AdminNavbar from '../../components/AdminNavbar';
 import notification from '../../resources/notification.png'
 import Avatar from 'react-avatar'
 import { AuthContext } from '../../Hooks/InfoContext';
 import axios from 'axios';
+import {useJsApiLoader,GoogleMap,Marker,Circle} from '@react-google-maps/api';
+
+const center = {
+  lat:   5.614818,
+  lng: -0.205874
+}
+
+const defaultRadius = 1000;
 
 const AdminDrive = () => {
   const {register,userInfo}= useContext(AuthContext);
@@ -16,14 +24,27 @@ const AdminDrive = () => {
   const [password,setPassword]=useState('');
   const [drivers,setDrivers]=useState([]); // Assuming drivers is an array of objects with a username field
   const comAssociate = Username;
+  const [circleCenter, setCircleCenter] = useState(null);
+
+  const handleMapDoubleClick = (e) => {
+    const lat = e.latLng.lat();
+    const lng = e.latLng.lng();
+    setCircleCenter({ lat, lng });
+  };
+  const areaAssigned = {
+    center: circleCenter,
+    radius: defaultRadius, // You can make this adjustable
+  };
+
 
   const AddNewDriver = (e) =>{
     e.preventDefault();
-    register(username, email, password, phone,role,comAssociate);
+    register(username, email, password, phone,role,comAssociate,areaAssigned);
     setEmail("");
     setUsername("");
     setPhone("");
     setPassword("");
+    setCircleCenter(null);
   }
  
   useEffect(()=>{
@@ -38,6 +59,16 @@ const AdminDrive = () => {
 
     getDriversCount();
   },[comAssociate])
+
+  const loaderOptions = useMemo(() => ({
+    googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
+   
+}), []);
+
+const { isLoaded } = useJsApiLoader(loaderOptions);
+    if (!isLoaded) {
+        return <div>Loading...</div>
+    }
 
   return (
     <div className='App'>
@@ -77,9 +108,14 @@ const AdminDrive = () => {
             <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
             <label className='labelH'>Assigned Password*</label>
             <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
-            <button className='driverBtn'>Add Driver</button>
+            <button className='driverBtn'>Next</button>
           </form>
         </div>
+      </div>
+      <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"20.5%",top:"14.3%"}}>
+        <GoogleMap onDblClick={handleMapDoubleClick} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
+
+        </GoogleMap>
       </div>
     </div>
   )
