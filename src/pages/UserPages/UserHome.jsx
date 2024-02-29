@@ -132,6 +132,7 @@ function UserHome() {
                 <div className='top-div'>
                     <div className='search-container'>
                         <img src={searchIcon} alt="search" />
+                        {/* //auto complete gm */}
                         <Autocomplete
                         onLoad={(autocomplete) => {
                             setAutocompleteInstance(autocomplete);
