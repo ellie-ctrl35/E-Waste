@@ -43,8 +43,8 @@ export const AuthProvider = ({ children }) => {
       .catch(error => console.error("Error fetching user requests", error));
   };
 
-  const register = (username, email, password, phone, role, comAssociate) => {
-    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate })
+  const register = (username, email, password, phone, role, comAssociate,areaAssigned) => {
+    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,areaAssigned })
       .then(res => res.status === 200 && console.log("Registration successful"))
       .catch(error => console.error("Registration error", error));
   };
