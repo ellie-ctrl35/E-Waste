@@ -12,7 +12,7 @@ const center = {
   lng: -0.205874
 }
 
-const defaultRadius = 1000;
+const defaultRadius = 2000;
 
 const AdminDrive = () => {
   const {register,userInfo}= useContext(AuthContext);
@@ -114,7 +114,11 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
       </div>
       <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"20.5%",top:"14.3%"}}>
         <GoogleMap onDblClick={handleMapDoubleClick} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
-
+        {circleCenter && (
+            <Circle center={circleCenter} radius={defaultRadius} options={{ fillColor: "dodgerblue", fillOpacity: 0.3,border:"transparent", strokeColor: "#fff", // Red border color
+            strokeOpacity: 0.2,     // Border opacity
+            strokeWeight: 2  }} />
+          )}
         </GoogleMap>
       </div>
     </div>
