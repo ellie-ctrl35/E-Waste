@@ -1,6 +1,6 @@
 import {useContext, useEffect, useMemo,useState} from 'react';
 import'../../App.css';
-import {useJsApiLoader,GoogleMap,Marker,InfoWindow} from '@react-google-maps/api';
+import {useJsApiLoader,GoogleMap,Marker,InfoWindow,Autocomplete} from '@react-google-maps/api';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import Avatar from 'react-avatar';
@@ -21,7 +21,7 @@ function AdminHome() {
 
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
-       
+        
     }), []);
 
     useEffect(() => {
@@ -58,7 +58,9 @@ function AdminHome() {
                 <Link to="/admindriver" className='backBtn2'>
                   <img src={backBtn} alt='notification'/>  
                 </Link>
+                
                 <input placeholder='Search location' className='location-search'/>
+              
                 <div className='profile-left'>
                     <img src={notification} alt='notification'/>
                     <Avatar name={username} size="30" round={true} />
