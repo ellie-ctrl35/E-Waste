@@ -24,16 +24,24 @@ const AdminDrive = () => {
   const [password,setPassword]=useState('');
   const [drivers,setDrivers]=useState([]); // Assuming drivers is an array of objects with a username field
   const comAssociate = Username;
-  const [circleCenter, setCircleCenter] = useState(null);
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+
 
   const handleMapDoubleClick = (e) => {
-    const lat = e.latLng.lat();
-    const lng = e.latLng.lng();
-    setCircleCenter({ lat, lng });
+    const newLatitude = e.latLng.lat();
+    const newLongitude = e.latLng.lng();
+    console.log(newLatitude, newLongitude)
+    setLatitude(newLatitude);
+    setLongitude(newLongitude);
+    console.log(latitude, longitude)
   };
+  
+  
   const areaAssigned = {
-    center: circleCenter,
-    radius: defaultRadius, // You can make this adjustable
+    lat: newLatitude,
+    long: newLongitude,
+    radius: defaultRadius,
   };
 
 
@@ -44,7 +52,6 @@ const AdminDrive = () => {
     setUsername("");
     setPhone("");
     setPassword("");
-    setCircleCenter(null);
   }
  
   useEffect(()=>{
@@ -114,11 +121,13 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
       </div>
       <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"20.5%",top:"14.3%"}}>
         <GoogleMap onDblClick={handleMapDoubleClick} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
-        {circleCenter && (
-            <Circle center={circleCenter} radius={defaultRadius} options={{ fillColor: "dodgerblue", fillOpacity: 0.3,border:"transparent", strokeColor: "#fff", // Red border color
-            strokeOpacity: 0.2,     // Border opacity
-            strokeWeight: 2  }} />
-          )}
+        {latitude !== null && longitude !== null && (
+  <Circle
+    center={{ latitude, lng: circleCenter.longitude }}
+    radius={defaultRadius}
+    options={{ /* options here */ }}
+  />
+)}
         </GoogleMap>
       </div>
     </div>

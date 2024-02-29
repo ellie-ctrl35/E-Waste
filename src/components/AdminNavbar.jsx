@@ -22,7 +22,7 @@ const AdminNavbar = () => {
                 <img src={RequestIcon} className='logout' alt='logout'/>
                 Haul Requests
             </Link>
-            <Link className='nav-links' to='/admindrive'>
+            <Link className='nav-links' to='/admindriver'>
                 <img src={RequestIcon} className='logout' alt='logout'/>
                 My Drivers
             </Link>
