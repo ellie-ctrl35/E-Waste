@@ -27,21 +27,8 @@ const AdminDrive = () => {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
 
-
-  const handleMapDoubleClick = (e) => {
-    const newLatitude = e.latLng.lat();
-    const newLongitude = e.latLng.lng();
-    console.log(newLatitude, newLongitude)
-    setLatitude(newLatitude);
-    setLongitude(newLongitude);
-    console.log(latitude, longitude)
-  };
-  
-  
   const areaAssigned = {
-    lat: newLatitude,
-    long: newLongitude,
-    radius: defaultRadius,
+   
   };
 
 
@@ -120,14 +107,8 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
         </div>
       </div>
       <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"20.5%",top:"14.3%"}}>
-        <GoogleMap onDblClick={handleMapDoubleClick} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
-        {latitude !== null && longitude !== null && (
-  <Circle
-    center={{ latitude, lng: circleCenter.longitude }}
-    radius={defaultRadius}
-    options={{ /* options here */ }}
-  />
-)}
+        <GoogleMap  zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
+        
         </GoogleMap>
       </div>
     </div>
