@@ -24,16 +24,23 @@ const AdminDrive = () => {
   const [password,setPassword]=useState('');
   const [drivers,setDrivers]=useState([]); // Assuming drivers is an array of objects with a username field
   const comAssociate = Username;
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-
+  const [markerPosition, setMarkerPosition] = useState(null);
+  
   const areaAssigned = {
-   
+    center: markerPosition,
+    radius: defaultRadius,
   };
 
+  const handlecircle = (e) =>{
+    const lat = e.latLng.lat();
+    const lng = e.latLng.lng();
+    setMarkerPosition({ lat, lng });
+    console.log(markerPosition)
+  }
 
-  const AddNewDriver = (e) =>{
-    e.preventDefault();
+
+  const AddNewDriver = () =>{
+  
     register(username, email, password, phone,role,comAssociate,areaAssigned);
     setEmail("");
     setUsername("");
@@ -107,8 +114,23 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
         </div>
       </div>
       <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"20.5%",top:"14.3%"}}>
-        <GoogleMap  zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
-        
+        <GoogleMap onDblClick={handlecircle} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
+        {markerPosition && (
+            <>
+              <Marker position={markerPosition} />
+              <Circle
+                center={markerPosition}
+                radius={defaultRadius}
+                options={{
+                  fillColor: "dodgerblue",
+                  fillOpacity: 0.3,
+                  strokeColor: "#fff",
+                  strokeOpacity: 0.2,
+                  strokeWeight: 2,
+                }}
+              />
+            </>
+          )}
         </GoogleMap>
       </div>
     </div>
