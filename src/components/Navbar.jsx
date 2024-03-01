@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.css'
-import logo from '../resources/logo.png'
+import logo from '../resources/logo.svg'
 import logout from '../resources/logout.png'
 import homeIcon from '../resources/homeIcon.png'
 import RequestIcon from '../resources/RequestIcon.png'
