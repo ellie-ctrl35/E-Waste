@@ -23,7 +23,6 @@ function AdminHome() {
     const [drivers,setDrivers]=useState([]);
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
-        
     }), []);
 
     useEffect(() => {
