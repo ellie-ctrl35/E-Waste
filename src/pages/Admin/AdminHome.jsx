@@ -3,6 +3,7 @@ import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker,InfoWindow,Autocomplete} from '@react-google-maps/api';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+
 import Avatar from 'react-avatar';
 import notification from '../../resources/notification.png';
 import backBtn from '../../resources/backIcon.png';
@@ -18,7 +19,8 @@ function AdminHome() {
     const [requests,setRequest]= useState([]);
     const [selectedRequest, setSelectedRequest] = useState(null);
     const username = userInfo.username;
-
+    const comAssociate = username;
+    const [drivers,setDrivers]=useState([]);
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
         
@@ -26,7 +28,16 @@ function AdminHome() {
 
     useEffect(() => {
         getRequests();
+        getDriversCount();
     }, []);
+    const getDriversCount = async () =>{
+        console.log(comAssociate)
+        await axios.post('http://localhost:5000/api/drivers',{comAssociate})
+        .then((res)=>{
+          console.log(res.data)
+          setDrivers(res.data)
+        })
+      }
 
     const getRequests = () => {
         axios.get('http://localhost:5000/api/request/allrequests')
@@ -43,7 +54,12 @@ function AdminHome() {
     if (!isLoaded) {
         return <div>Loading...</div>
     }
-
+    const infoWindowStyle = {
+        width: '250px', // Set your desired width
+        height: '150px', // Set your desired height
+        // Add any other styling you need here
+    };
+    
     const handleMarkerClick = (request) => {
         setSelectedRequest(request);
     };
@@ -69,31 +85,36 @@ function AdminHome() {
 
                 <div style={{width:"3%",height:"6%",background:"#1C3530",position:"absolute",top:"80%",left:"2%"}} onClick={()=>logout()}></div>
                 {requests.map(request => (
-    <Marker
-        key={request._id}
-        position={{ lat: request.lat, lng: request.long }}
-        onClick={() => handleMarkerClick(request)}
-        icon={request.status === "completed" ? greenMarkerIcon : redMarkerIcon}
-    />
+    request.status === "Pending" && ( // Only render markers for requests with status 'pending'
+        <Marker
+            key={request._id}
+            position={{ lat: request.lat, lng: request.long }}
+            onClick={() => handleMarkerClick(request)}
+            icon={redMarkerIcon} // Assuming red marker icon is for pending requests
+        />
+    )
 ))}
 
-                
-                {selectedRequest && (
-                        <InfoWindow 
-                       
-                            position={{ lat: selectedRequest.lat, lng: selectedRequest.long }}
-                            onCloseClick={() => setSelectedRequest(null)}
-                            icon={'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'} // URL to your custom marker image
-                            
-                            
-                        >
-                            <div style={{background:"dodgerblue",width:"100%",height:"100%"}} >
-                                <h3 style={{color:'black'}}>{selectedRequest.username}</h3>
-                                <p style={{color:'black'}}>Date Created: {selectedRequest.dateCreated}</p>
-                                <p style={{color:'black'}}>Status: {selectedRequest.status}</p>
-                            </div>
-                        </InfoWindow>
-                )}
+
+{selectedRequest && (
+    <InfoWindow
+        position={{ lat: selectedRequest.lat, lng: selectedRequest.long }}
+        onCloseClick={() => setSelectedRequest(null)}
+    >
+        <div style={{...infoWindowStyle, background:"dodgerblue"}}>
+            <h3 style={{color:'black'}}>Username: {selectedRequest.author}</h3>
+            <p style={{color:'black'}}>Date Created: {selectedRequest.createdAt}</p>
+            <p style={{color:'black'}}>Status: {selectedRequest.status}</p>
+            <label htmlFor="dropdownMenu">Assign driver:</label>
+            <select id="dropdownMenu" name="dropdown">
+                {drivers.map(driver => (
+                    <option key={driver.id} value={driver.id}>{driver.
+                        username} </option>
+                ))}
+            </select>
+        </div>
+    </InfoWindow>
+)}
 
                 </GoogleMap>
 
