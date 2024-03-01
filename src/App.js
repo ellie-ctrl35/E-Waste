@@ -1,28 +1,42 @@
-import React, { useContext, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'; 
-import './App.css';
-import Login from './pages/Auth/Login';
-import SignUp from './pages/Auth/SignUp';
-import UserHome from './pages/UserPages/UserHome';
-import AdminHome from './pages/Admin/AdminHome';
-import AdminDrive from './pages/Admin/AdminDrive';
-import User from './pages/UserPages/User';
-import  AdminDash  from './pages/Admin/AdminDash';
-import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import AuthContext
+import React, { useContext, useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
+import SplashScreen from "./pages/SplashScreen/SplashScreen"; // Import SplashScreen component
+import Login from "./pages/Auth/Login";
+import SignUp from "./pages/Auth/SignUp";
+import UserHome from "./pages/UserPages/UserHome";
+import AdminHome from "./pages/Admin/AdminHome";
+import AdminDrive from "./pages/Admin/AdminDrive";
+import User from "./pages/UserPages/User";
+import AdminDash from "./pages/Admin/AdminDash";
+import { AuthContext } from "./Hooks/InfoContext"; // Import AuthContext
 
 function App() {
   const { userToken, userInfo, isLogged } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => { 
-    isLogged(); 
+  useEffect(() => {
+    isLogged();
+  }, []);
+
+  // Simulate a loading state for 3 seconds before showing the app content
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-      <BrowserRouter>
+    <BrowserRouter>
+      {isLoading ? ( // Show SplashScreen while loading
+        <SplashScreen />
+      ) : (
         <Routes>
           {userToken ? (
             // If the user is logged in
-            userInfo.role === 'user' ? (
+            userInfo.role === "user" ? (
               // If the user is a regular user
               <>
                 <Route path="/makerequest" element={<UserHome />} />
@@ -34,7 +48,7 @@ function App() {
               <>
                 <Route path="/admin" element={<AdminHome />} />
                 <Route path="/admindriver" element={<AdminDrive />} />
-                <Route path='/admindash' element={<AdminDash/>}/>
+                <Route path="/admindash" element={<AdminDash />} />
                 <Route path="/" element={<Navigate replace to="/admin" />} />
               </>
             )
@@ -47,7 +61,8 @@ function App() {
             </>
           )}
         </Routes>
-      </BrowserRouter>
+      )}
+    </BrowserRouter>
   );
 }
 

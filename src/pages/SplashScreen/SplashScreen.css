@@ -1,0 +1,92 @@
+/* SplashScreen.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1C3530; /* Customize background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  animation: splashAnimation 18.5s forwards; /* Control the animation duration */
+}
+
+.splash-screen.hide {
+  opacity: 0;
+  z-index: -1; /* Hide the splash screen when loading is complete */
+}
+
+.Logo-container {
+  width: 393px;
+  height: 138px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align content horizontally */
+  justify-content: center; /* Align content vertically */
+  margin: auto; /* Center horizontally */
+  opacity: 0; /* Initially hide Logo-container */
+  animation: logoAnimation 5s forwards; /* Logo animation duration */
+}
+
+.AppLogo {
+  width: 255px;
+  height: 82px;
+  flex-shrink: 0;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  opacity: 0; /* Initially hide AppLogo */
+  animation: appLogoAnimation 3s 0.25s forwards, spinAnimation 0.5s linear infinite;/* AppLogo animation duration and delay */
+}
+
+.text-container {
+  height: 29px;
+  width: 375px;
+  display: flex;
+  flex-direction: row;
+  opacity: 0; /* Initially hide text-container */
+  animation: textAnimation 2s 4s forwards; /* Text animation duration and delay */
+}
+
+.firsttext {
+  color: white;
+  font-family: "Inter";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  opacity: 0.50;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Keyframe animations */
+@keyframes splashAnimation {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes logoAnimation {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appLogoAnimation {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes textAnimation {
+  to {
+    opacity: 1;
+  }
+}
