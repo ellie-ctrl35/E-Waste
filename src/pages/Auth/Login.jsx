@@ -3,6 +3,9 @@ import './Auth.css'
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../Hooks/InfoContext'; 
+import GreenLogo from '../../resources/logo-green.svg'
+
+
 
 function Login() {
     const { Login } = useContext(AuthContext); 
@@ -25,21 +28,29 @@ function Login() {
     
     return (
         <div className='container'>
-            <div className='auth-container'>
-                <h1 className='logo'>
-                    EcoHaul
-                </h1>
-               <div className='form-container'>
-                <form onSubmit={handleSubmit}>
-                    <h1>Login to EcoHaul</h1>
-                    <label>Email</label>
-                    <input type='text' onChange={(e)=>setEmail(e.target.value)} placeholder='hello@gmail.com'/>
-                    <label>Password</label>
+            <div className='logo-container'>
+                <img src={GreenLogo} alt='Logo'/>
+            </div>
+            <div className='login-content'>
+                <div className='login-welcome-content'>
+                  <h1>Login to EcoHaul</h1>
+                  <p>Welcome back!! Kindly sign-in to access your account.</p>
+                </div>
+            <form onSubmit={handleSubmit} className='form'>
+                <div className='Email-Password-container'></div>
+                <div className='Email-container'>
+                  <label>Email*</label>
+                  <input type='text' onChange={(e)=>setEmail(e.target.value)} placeholder='hello@gmail.com'/>
+                </div>
+                <div className='Password-container'>
+                    <label>Password*</label>
                     <input type='password' onChange={(e)=>setPassword(e.target.value)} placeholder='Your Password'/>
+                </div>
+                    
+                    
                     <Link to='/signup' className='forgot-pwd'>Forgot Password?</Link>
                     <button type='submit'>Log in</button>
-                </form>
-               </div>
+            </form>
             </div>
         </div>
     );

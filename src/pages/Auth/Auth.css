@@ -1,90 +1,205 @@
-.container{
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background: #1C3530;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally */
+  justify-content: flex-start; /* Align children to the start of the main axis (top) */
+  height: 100vh; /* Make the container full height */
+  width: 100%; /* Full width */
+  background: white;
 }
-.auth-container{
-    width: 76%;
-    margin-right: 2%;
-    height:90%;
-    background: white;
-    float: right;
-    border-radius: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+.logo-container {
+  width: 100%; /* Set the width to 100% */
+  max-width: 100%;
+  height: 94px;
+  display: flex;
+  flex-direction: row;
+  top: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 60px;
 }
-.logo{
-    color: #1C3530;
-    font-size: 1.7rem;
-    font-weight: bold;
-    float: left;
-    margin-left: 2rem;
-    font-family: 'Cantora One', sans-serif;
+
+.logo-container img {
+  margin-left: 35px;
 }
-.form-container{
-    width: 100%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 3%;
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 676px;
+  width: 754px;
+  margin: auto;
+  margin-top: 0;
 }
-form{
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+
+.login-welcome-content {
+  height: 104px;
+  width: 626px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 85px;
 }
-form h1{
-    font-size: 2.2rem;
-    font-family: 'Cantora One', sans-serif;
-    text-align: center;
-    color: #1C3530;
+
+.login-welcome-content h1 {
+  font-size: 45px;
+  font-family: "Cantora One", sans-serif;
+  text-align: center;
+  color: #1c3530;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
-form label{
-    font-family:'Inter';
-font-size: 1.2rem;
-font-weight: 300;
-line-height: 39px;
-letter-spacing: 0em;
-text-align: left;
-margin-bottom:0.2rem ;
+
+.login-welcome-content p {
+  font-size: 24px;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  color: #6e6d7a;
+  font-weight: 300;
+  line-height: normal;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-form input{
-    width: 100%;
-    height: 1.2rem;
-    border: 1px solid #787e7d;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin-bottom: 0.6rem;
-    font-family: 'Inter';
-    font-size: 1.1rem;
+
+.logo {
+  color: #1c3530;
+  font-size: 1.7rem;
+  font-weight: bold;
+  float: left;
+  margin-left: 2rem;
+  font-family: "Cantora One", sans-serif;
 }
-.forgot-pwd{
-    font-family: 'Inter';
-    font-size: 0.9rem;
-    color: #1C3530;
-    text-align: left;
-    margin-right: 2rem;
-    margin-bottom: 1rem;
-    text-decoration: none;
-    font-weight: 500;
+.form-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
 }
-form button{
-    width: 105%;
-    height: 2.5rem;
-    background: #1C3530;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-family: 'Inter';
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-top: 1rem;
-    cursor: pointer;
+form {
+  width: 507px;
+  height: 564px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.Email-Password-container {
+  height: 263.54px;
+  width: 474px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.Email-container {
+  height: 116.77px;
+  width: 473px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.Email-container label {
+  font-size: 24px;
+  font-family: "Inter", sans-serif;
+  text-align: left;
+  color: #1c3530;
+  margin-bottom: 10px;
+}
+
+.Email-container input {
+  width: 473px;
+  height: 72.77px;
+  background: #ececec;
+  border-radius: 10px;
+  border: none;
+}
+
+.Password-container {
+  height: 116.77px;
+  width: 473px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.Password-container label {
+  font-size: 24px;
+  font-family: "Inter", sans-serif;
+  text-align: left;
+  color: #1c3530;
+  margin-bottom: 10px;
+}
+
+.Password-container input {
+  width: 473px;
+  height: 72.77px;
+  background: #ececec;
+  border-radius: 10px;
+  border: none;
+}
+
+form h1 {
+  font-size: 2.2rem;
+  font-family: "Cantora One", sans-serif;
+  text-align: center;
+  color: #1c3530;
+}
+form label {
+  font-family: "Inter";
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 39px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 0.2rem;
+}
+form input {
+  width: 100%;
+  height: 1.2rem;
+  border: 1px solid #787e7d;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-family: "Inter";
+  font-size: 1.1rem;
+}
+.forgot-pwd {
+  font-family: "Inter";
+  font-size: 0.9rem;
+  color: #1c3530;
+  text-align: left;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+form button {
+  width: 105%;
+  height: 4.5rem;
+  background: #1c3530;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: "Inter";
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  cursor: pointer;
 }
