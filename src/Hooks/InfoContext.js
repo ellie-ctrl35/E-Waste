@@ -10,7 +10,8 @@ export const AuthProvider = ({ children }) => {
   const [userRequests, setUserRequests] = useState([]);
 
   const Login = (email, password) => {
-    return axios.post("http://localhost:5000/api/auth/login", { email, password })
+    try {
+      return axios.post("http://localhost:5000/api/auth/login", { email, password })
       .then((res) => {
         const { email, role, token, username } = res.data;
         const UserInfo = { email, role, username };
@@ -22,10 +23,13 @@ export const AuthProvider = ({ children }) => {
         fetchUserRequests(email);
       })
       .catch((error) => {
-        console.error("Login error", error);
+        console.error("Login error from infoContext", error);
         setLoading(false);
         throw error;
       });
+    } catch (error) {
+      console.log("error from frontend")
+    }
   };
   
 
@@ -38,7 +42,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const fetchUserRequests = (email) => {
-    axios.get(`http://172.20.10.5:5000/api/request/userhistory?author=${email}`)
+    axios.get(`http://localhost:5000/api/request/userhistory?author=${email}`)
       .then(res => setUserRequests(res.data))
       .catch(error => console.error("Error fetching user requests", error));
   };

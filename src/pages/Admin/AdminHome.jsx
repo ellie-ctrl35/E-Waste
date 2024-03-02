@@ -62,8 +62,7 @@ function AdminHome() {
     const handleMarkerClick = (request) => {
         setSelectedRequest(request);
     };
-    const greenMarkerIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-    const redMarkerIcon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+    
     
     return (
         <div className='App' style={{position:"relative"}}>
@@ -89,7 +88,7 @@ function AdminHome() {
             key={request._id}
             position={{ lat: request.lat, lng: request.long }}
             onClick={() => handleMarkerClick(request)}
-            icon={redMarkerIcon} // Assuming red marker icon is for pending requests
+             // Assuming red marker icon is for pending requests
         />
     )
 ))}

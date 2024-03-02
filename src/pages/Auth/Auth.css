@@ -1,90 +1,94 @@
 .container{
     display: flex;
+    flex-direction: column;
     justify-content: right;
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background: #1C3530;
+    background: #fff;
 }
-.auth-container{
-    width: 76%;
-    margin-right: 2%;
-    height:90%;
-    background: white;
-    float: right;
-    border-radius: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.logo{
-    color: #1C3530;
-    font-size: 1.7rem;
-    font-weight: bold;
-    float: left;
-    margin-left: 2rem;
-    font-family: 'Cantora One', sans-serif;
+.logo-container{
+    width: 100%;
+    height: 10%;
+    border-bottom: #00000080 1px solid;
 }
 .form-container{
     width: 100%;
     height: 90%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 3%;
 }
 form{
-    width: 40%;
-    height: 100%;
+    width: 50% ;
+    height: 85%;
+    padding: 0;
     display: flex;
     flex-direction: column;
 }
 form h1{
-    font-size: 2.2rem;
-    font-family: 'Cantora One', sans-serif;
-    text-align: center;
     color: #1C3530;
+    font-family: 'CantoraOne';
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+form h2{
+    margin-top: 0.7rem;
+    margin-bottom: 6%;
+    font-family: 'Inter';
+    text-align: center;
+    font-size: 1rem;
+    color: #6E6D7A;
 }
 form label{
-    font-family:'Inter';
-font-size: 1.2rem;
-font-weight: 300;
-line-height: 39px;
-letter-spacing: 0em;
-text-align: left;
-margin-bottom:0.2rem ;
-}
-form input{
-    width: 100%;
-    height: 1.2rem;
-    border: 1px solid #787e7d;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin-bottom: 0.6rem;
-    font-family: 'Inter';
-    font-size: 1.1rem;
-}
-.forgot-pwd{
-    font-family: 'Inter';
-    font-size: 0.9rem;
+    margin-top: 1.2rem;
+    margin-left: 25%;
     color: #1C3530;
-    text-align: left;
-    margin-right: 2rem;
-    margin-bottom: 1rem;
-    text-decoration: none;
-    font-weight: 500;
-}
-form button{
-    width: 105%;
-    height: 2.5rem;
-    background: #1C3530;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-family: 'Inter';
     font-size: 1.1rem;
-    font-weight: 500;
-    margin-top: 1rem;
+    font-family: 'Inter';
+}
+.input-group{
+    display: flex;
+    flex-direction: row;
+    height: 9%;
+    width: 50%;
+    background: #ECECEC;
+    border-radius: 0.3rem;
+    margin-left: 25%;
+    margin-top: 1%;
+    align-items: center;
+}
+.input-group input{
+    width: 90%;
+    height: 100%;
+    border: none;
+    background: none;
+    font-size: 1.1rem;
+    font-family: 'Inter';
+    color: #1C3530;
+    padding-left: 0.4rem;
+    outline: none;
+}
+h3{
+    color: #6E6D7A;
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Inter';
+    margin-top: 3%;
+}
+button{
+    width: 50%;
+    height: 9%;
+    background: #1C3530;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Inter';
+    border: none;
+    border-radius: 0.3rem;
+    margin-left: 25%;
+    margin-top: 3%;
     cursor: pointer;
+    outline: none;
 }
