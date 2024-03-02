@@ -4,6 +4,7 @@ import logo from '../resources/logo.png'
 import logout from '../resources/logout.png'
 import homeIcon from '../resources/homeIcon.png'
 import RequestIcon from '../resources/RequestIcon.png'
+import LogoutIcon from '../resources/LogOut.svg'
 import {Link} from 'react-router-dom'
 
 const AdminNavbar = () => {
@@ -34,8 +35,8 @@ const AdminNavbar = () => {
         </ul>
     </div>
     <div className='logout-container'>
-       <Link>
-       <img src={RequestIcon} className='logout' alt='logout'/>
+       <Link className='nav-links'>
+       <img src={LogoutIcon} className='logout' alt='logout'/>
        Logout
        </Link>
     </div>
