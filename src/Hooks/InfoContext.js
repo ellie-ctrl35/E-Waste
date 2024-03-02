@@ -8,18 +8,23 @@ export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [userRequests, setUserRequests] = useState([]);
+  const [streamToken,setStreamtoken] = useState("")
 
   const Login = (email, password) => {
     try {
       return axios.post("http://localhost:5000/api/auth/login", { email, password })
       .then((res) => {
-        const { email, role, token, username } = res.data;
-        const UserInfo = { email, role, username };
+        console.log(res);
+        const { email, role, token, username,streamToken,id } = res.data;
+        const UserInfo = { email, role, username,id };
         console.log(UserInfo);
         setUserInfo(UserInfo);
+        console.log(streamToken)
         setUserToken(token);
+        setStreamtoken(streamToken)
         localStorage.setItem("userInfo", JSON.stringify(UserInfo));
         localStorage.setItem("userToken", token);
+        localStorage.setItem("streamToken", streamToken);
         fetchUserRequests(email);
       })
       .catch((error) => {
@@ -48,7 +53,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = (username, email, password, phone, role, comAssociate,areaAssigned) => {
-    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,areaAssigned })
+    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,areaAssigned,streamToken })
       .then(res => res.status === 200 && console.log("Registration successful"))
       .catch(error => console.error("Registration error", error));
   };
