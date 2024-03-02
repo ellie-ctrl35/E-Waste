@@ -5,6 +5,7 @@ import logout from '../resources/logout.png'
 import homeIcon from '../resources/homeIcon.png'
 import RequestIcon from '../resources/RequestIcon.png'
 import LogoutIcon from '../resources/LogOut.svg'
+import MyDrivers from '../resources/MyDrivers.svg'
 import {Link} from 'react-router-dom'
 
 const AdminNavbar = () => {
@@ -24,7 +25,7 @@ const AdminNavbar = () => {
                 Haul Requests
             </Link>
             <Link className='nav-links' to='/admindriver'>
-                <img src={RequestIcon} className='logout' alt='logout'/>
+                <img src={MyDrivers} className='logout' alt='logout'/>
                 My Drivers
             </Link>
             <Link className='nav-links' to='/makerequest'>
