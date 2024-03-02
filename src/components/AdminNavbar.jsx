@@ -32,6 +32,10 @@ const AdminNavbar = () => {
                 <img src={RequestIcon} className='logout' alt='logout'/>
                 Haul History
             </Link>
+            <Link className='nav-links' to='/message'>
+                <img src={RequestIcon} className='logout' alt='logout'/>
+                Chat
+            </Link>
         
         </ul>
     </div>
