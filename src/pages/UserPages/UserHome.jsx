@@ -34,12 +34,14 @@ function UserHome() {
     }, []);
 
     const fetchWorldwideAirQualityData = async () => {
-        const apiUrl = 'https://api.waqi.info'; // Replace with the correct API URL
         const token = 'baeb66a7595a718c9712b72174a654b5891e92a4'; // Replace with your token
-        const locations = ['New York', 'London', 'Delhi']; // Example locations
+        const bounds = {
+            latlng: '-35,37,-17,51' // Latitude and Longitude bounds for Africa
+        };
+        const apiUrl = `https://api.waqi.info/map/bounds?token=${token}&latlng=${bounds.latlng}`;
     
         
-        axios.get(`${apiUrl}/feed/${locations}/?token=${token}`)
+        axios.get(apiUrl)
         .then((res)=>{
             console.log(res);
             setAirQualityData(res);

@@ -48,6 +48,25 @@ function AdminHome() {
       });
   };
 
+ const AssignDriver = ()=>{
+  const driverId = document.getElementById("dropdownMenu").value;
+  const requestId = selectedRequest._id;
+  axios
+    .post("http://localhost:5000/api/request/assigndriver", {
+      driverId,
+      requestId,
+    })
+    .then((response) => {
+      console.log("Success:", response.data);
+      getRequests();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  setSelectedRequest(null);
+  getRequests();
+ }
+
   const getRequests = () => {
     axios
       .get("http://localhost:5000/api/request/allrequests")
@@ -149,6 +168,7 @@ function AdminHome() {
                     </option>
                   ))}
                 </select>
+                <button onClick={AssignDriver} style={{width:"60%",height:"20%",fontSize:"0.4rem"}}>Assign Haul</button>
               </div>
             </InfoWindow>
           )}
