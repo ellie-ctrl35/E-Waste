@@ -162,14 +162,12 @@ function UserHome() {
                     </div>
                 </div>
                 <div className='mid-div'>
-                    <Link className='mid-div-link'>
-                     <img src={backBtn} alt='back'/>
-                    </Link>
                     <div className='mid-div-bottom'>
                        <div className='texts'>
                         <h1>Put in a Haul Request</h1>
                         <h2>Select a location from map for waste pickup</h2>
                        </div>
+                       <button onClick={sendLocationData} className='request-btn'>Use Live Location</button>
                        <button onClick={sendLocationData} className='request-btn'>Make a Request</button>
                     </div>
                 </div>
@@ -194,9 +192,9 @@ function UserHome() {
                 </GoogleMap>
                </div>
             </div>
-            <button onClick={getUserLocation} className='location-btn'>
+            {/*<button onClick={getUserLocation} className='location-btn'>
                 <img src={LiveLocation} alt="location" />
-            </button>
+            </button>*/}
     </>
 )}          
         </div>
