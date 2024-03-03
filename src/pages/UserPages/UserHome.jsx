@@ -16,21 +16,39 @@ const center = {
     lng: -0.205874
 }
 
-
 function UserHome() {
     const { userInfo } = useContext(AuthContext);
     const username = userInfo.username; 
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [searchedLocation, setSearchedLocation] = useState(null);
     const [autocompleteInstance, setAutocompleteInstance] = useState(null);
-
+    const [airQualityData, setAirQualityData] = useState([]);
     const [type, setType] = useState('');
     const [long, setLong] = useState(0);     
     const [lat, setLat] = useState(0);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetchWorldwideAirQualityData()
+        console.log(airQualityData)
+    }, []);
+
+    const fetchWorldwideAirQualityData = async () => {
+        const apiUrl = 'https://api.waqi.info'; // Replace with the correct API URL
+        const token = 'baeb66a7595a718c9712b72174a654b5891e92a4'; // Replace with your token
+        const locations = ['New York', 'London', 'Delhi']; // Example locations
+    
+        
+        axios.get(`${apiUrl}/feed/${locations}/?token=${token}`)
+        .then((res)=>{
+            console.log(res);
+            setAirQualityData(res);
+        })
+            
+    };
     
     const WasteTypeModal = () => (
-        <div className="modal"> {/* You'll need to style this accordingly */}
+        <div className="modal">
             <form onSubmit={(e) => {
                 e.preventDefault();
                 handleTypeSelect(e.target.type.value);
@@ -40,16 +58,16 @@ function UserHome() {
                     <option value="Plastic">Plastic</option>
                     <option value="Metal">Metal</option>
                     <option value="Paper">Paper</option>
-                    {/* Add more options as needed */}
                 </select>
                 <button type="submit">Submit</button>
             </form>
         </div>
     );
+
    const handleTypeSelect = (selectedType) => {
     setType(selectedType);
     setIsModalOpen(false);
-};
+   };
 
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4" ,libraries: ['places'],
@@ -58,14 +76,9 @@ function UserHome() {
     const handleMapClick = (event) => {
          setLong(event.latLng.lng());
          setLat(event.latLng.lat());
-    //    setLocation({
-    //        lat: event.latLng.lat(),
-      //      lng: event.latLng.lng(),
-      //      name: 'Place Name' // Replace this with actual place name retrieval logic if available
-    //    });
     };
 
-   const sendLocationData = () => {
+    const sendLocationData = () => {
         const data = {
             lat,
             long,
@@ -82,6 +95,7 @@ function UserHome() {
             });
            // console.log(user)
     };
+
     const onPlaceSelected = () => {
         if (autocompleteInstance) {
             const place = autocompleteInstance.getPlace();
@@ -93,7 +107,6 @@ function UserHome() {
             setLong(lng);
         }
     };
-
 
     const getUserLocation = () => {
         try{
@@ -185,12 +198,9 @@ function UserHome() {
                 <img src={LiveLocation} alt="location" />
             </button>
     </>
-)}
-
-            
+)}          
         </div>
     );
 }
-
 
 export default UserHome;
