@@ -135,12 +135,11 @@ function AdminHome() {
           </div>
           {requests.map(
             (request) =>
-              request.status === "Pending" && ( // Only render markers for requests with status 'pending'
+              request.status === "Pending" ||request.TakenBy ==="anyone" &&  ( // Only render markers for requests with status 'pending'
                 <Marker
                   key={request._id}
                   position={{ lat: request.lat, lng: request.long }}
                   onClick={() => handleMarkerClick(request)}
-                  // Assuming red marker icon is for pending requests
                 />
               )
           )}
