@@ -52,10 +52,10 @@ export const AuthProvider = ({ children }) => {
       .catch(error => console.error("Error fetching user requests", error));
   };
 
-  const register = (username, email, password, phone, role, comAssociate,areaAssigned) => {
-    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,areaAssigned,streamToken })
+  const register = (username, email, password, phone, role, comAssociate,lat,long) => {
+    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,lat,long})
       .then(res => res.status === 200 && console.log("Registration successful"))
-      .catch(error => console.error("Registration error", error));
+      .catch(error => console.error("Registration error in InfoContext", error));
   };
 
  {/* const login = (email, password) => {
