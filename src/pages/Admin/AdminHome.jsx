@@ -20,6 +20,14 @@ const center = {
   lng: -0.205874,
 };
 
+const loaderOptions = {
+  googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4",
+  libraries: ["places"], // Add 'places' if you need Autocomplete or other places library features
+  version: "weekly",
+  language: "en",
+  region: "US",
+};
+
 function AdminHome() {
   const { logout, userInfo } = useContext(AuthContext);
   const [requests, setRequest] = useState([]);
@@ -27,12 +35,6 @@ function AdminHome() {
   const username = userInfo.username;
   const comAssociate = username;
   const [drivers, setDrivers] = useState([]);
-  const loaderOptions = useMemo(
-    () => ({
-      googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4",
-    }),
-    []
-  );
 
   useEffect(() => {
     getRequests();

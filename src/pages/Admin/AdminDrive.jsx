@@ -12,6 +12,14 @@ const center = {
   lng: -0.205874
 }
 
+const loaderOptions = {
+  googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4",
+  libraries: ["places"], // Add 'places' if you need Autocomplete or other places library features
+  version: "weekly",
+  language: "en",
+  region: "US",
+};
+
 const defaultRadius = 2000;
 
 const AdminDrive = () => {
@@ -60,11 +68,6 @@ const AdminDrive = () => {
 
     getDriversCount();
   },[comAssociate])
-
-  const loaderOptions = useMemo(() => ({
-    googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4"
-   
-}), []);
 
 const { isLoaded } = useJsApiLoader(loaderOptions);
     if (!isLoaded) {
