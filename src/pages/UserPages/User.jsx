@@ -27,7 +27,7 @@ function User() {
                 });
         }
     }, [email]);
-    
+
     return (
         <div className='App'>
             <Navbar />
@@ -53,6 +53,13 @@ function User() {
                 </div>
 
                 <div className='history-box'>
+                    <h1 style={{fontWeight:500,fontSize:"0.9rem",fontFamily:"Inter",color:"black",marginRight:"86%"}}>Haul History</h1>
+                    <div className='history-headers'>
+                        <h2>Haul ID</h2>
+                        <h2>Location</h2>
+                        <h2>Time</h2>
+                        <h2>Status</h2>
+                    </div>
                  <ul>
                    <div></div>
                  </ul>

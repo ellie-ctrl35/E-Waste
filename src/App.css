@@ -134,10 +134,12 @@ justify-content: start;
   position: absolute;
 }
 .history-box{
-  background: #179A72;
+  background: #fff;
+  border-radius: 0.3rem;
   width: 90%;
   height: 60%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -204,7 +206,7 @@ justify-content: start;
 }
 .history-box ul{
   width: 90%;
-  height: 80%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,6 +214,25 @@ justify-content: start;
   background-color: pink;
   overflow: scroll;
   scroll-behavior: smooth;
+}
+.history-headers{
+  width: 94%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20%;
+  background-color: #EDEDED;
+  border-radius: 0.3rem;
+}
+.history-headers h2{
+  font-family: 'Inter';
+  font-size: 0.8rem;
+  font-weight: bolder;
+  text-align: left;
+  color: black;
+  margin-left: 1.5rem;
+
 }
 .modal{
   display: flex;
