@@ -6,6 +6,7 @@ import notification from '../../resources/notification.png';
 import { AuthContext } from '../../Hooks/InfoContext';
 import {useState,useContext,useEffect} from 'react';
 import axios from 'axios';
+import TimeAgo from 'timeago'
 
 function User() {
     const [requests, setRequests] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -27,6 +28,7 @@ function User() {
                 });
         }
     }, [email]);
+
 
     return (
         <div className='App'>
@@ -61,7 +63,14 @@ function User() {
                         <h2>Status</h2>
                     </div>
                  <ul>
-                   <div></div>
+                        {history.map(request => (
+                            <div key={request._id} className='history-div'>
+                                <span>{request._id}</span>
+                                <span>{request.type}</span>
+                                <span>{request.createdAt}</span>
+                                <span>{request.status}</span>
+                            </div>
+                        ))}
                  </ul>
                 </div>
 

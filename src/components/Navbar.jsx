@@ -26,11 +26,11 @@ const  Navbar = (props) =>{
                     </Link>
                 </ul>
             </div>
-            <div className='logout-container'>
-            <Link  onClick={()=>logout()}>
-       <img src={RequestIcon} className='logout' alt='logout'/>
-       Logout
-       </Link>
+            <div style={{display:"flex",flexDirection:"row",width:"50%",height:"",alignItems:"center",justifyContent:"space-evenly",marginBottom:"12%",marginLeft:"4%"}}>
+            <img src={RequestIcon} className='logout' alt='logout'/>
+              <Link style={{textDecoration:"none",fontFamily:"Inter",fontSize:"1rem",color:"white"}}  onClick={()=>logout()}>
+               Logout
+              </Link>
             </div>
         </div>
     );
