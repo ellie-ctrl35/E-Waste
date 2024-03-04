@@ -47,9 +47,10 @@ const AdminDrive = () => {
   }
 
 
-  const AddNewDriver = () =>{
-  
+  const AddNewDriver = (e) =>{
+    e.preventDefault()
     register(username, email, password, phone,role,comAssociate,areaAssigned);
+    console.log(username, email, password, phone,role,comAssociate,areaAssigned)
     setEmail("");
     setUsername("");
     setPhone("");
