@@ -16,21 +16,41 @@ const center = {
     lng: -0.205874
 }
 
-
 function UserHome() {
     const { userInfo } = useContext(AuthContext);
     const username = userInfo.username; 
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [searchedLocation, setSearchedLocation] = useState(null);
     const [autocompleteInstance, setAutocompleteInstance] = useState(null);
-
+    const [airQualityData, setAirQualityData] = useState([]);
     const [type, setType] = useState('');
     const [long, setLong] = useState(0);     
     const [lat, setLat] = useState(0);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetchWorldwideAirQualityData()
+        console.log(airQualityData)
+    }, []);
+
+    const fetchWorldwideAirQualityData = async () => {
+        const token = 'baeb66a7595a718c9712b72174a654b5891e92a4'; // Replace with your token
+        const bounds = {
+            latlng: '-35,37,-17,51' // Latitude and Longitude bounds for Africa
+        };
+        const apiUrl = `https://api.waqi.info/map/bounds?token=${token}&latlng=${bounds.latlng}`;
+    
+        
+        axios.get(apiUrl)
+        .then((res)=>{
+            console.log(res);
+            setAirQualityData(res);
+        })
+            
+    };
     
     const WasteTypeModal = () => (
-        <div className="modal"> {/* You'll need to style this accordingly */}
+        <div className="modal">
             <form onSubmit={(e) => {
                 e.preventDefault();
                 handleTypeSelect(e.target.type.value);
@@ -40,16 +60,16 @@ function UserHome() {
                     <option value="Plastic">Plastic</option>
                     <option value="Metal">Metal</option>
                     <option value="Paper">Paper</option>
-                    {/* Add more options as needed */}
                 </select>
                 <button type="submit">Submit</button>
             </form>
         </div>
     );
+
    const handleTypeSelect = (selectedType) => {
     setType(selectedType);
     setIsModalOpen(false);
-};
+   };
 
     const loaderOptions = useMemo(() => ({
         googleMapsApiKey: "AIzaSyB_oFQ3l8sdvksjPmf-q5lK75YPv0N2Kp4" ,libraries: ['places'],
@@ -58,14 +78,9 @@ function UserHome() {
     const handleMapClick = (event) => {
          setLong(event.latLng.lng());
          setLat(event.latLng.lat());
-    //    setLocation({
-    //        lat: event.latLng.lat(),
-      //      lng: event.latLng.lng(),
-      //      name: 'Place Name' // Replace this with actual place name retrieval logic if available
-    //    });
     };
 
-   const sendLocationData = () => {
+    const sendLocationData = () => {
         const data = {
             lat,
             long,
@@ -82,6 +97,7 @@ function UserHome() {
             });
            // console.log(user)
     };
+
     const onPlaceSelected = () => {
         if (autocompleteInstance) {
             const place = autocompleteInstance.getPlace();
@@ -93,7 +109,6 @@ function UserHome() {
             setLong(lng);
         }
     };
-
 
     const getUserLocation = () => {
         try{
@@ -149,14 +164,12 @@ function UserHome() {
                     </div>
                 </div>
                 <div className='mid-div'>
-                    <Link className='mid-div-link'>
-                     <img src={backBtn} alt='back'/>
-                    </Link>
                     <div className='mid-div-bottom'>
                        <div className='texts'>
                         <h1>Put in a Haul Request</h1>
                         <h2>Select a location from map for waste pickup</h2>
                        </div>
+                       <button onClick={sendLocationData} className='request-btn'>Use Live Location</button>
                        <button onClick={sendLocationData} className='request-btn'>Make a Request</button>
                     </div>
                 </div>
@@ -182,16 +195,13 @@ function UserHome() {
                 </GoogleMap>
                </div>
             </div>
-            <button onClick={getUserLocation} className='location-btn'>
+            {/*<button onClick={getUserLocation} className='location-btn'>
                 <img src={LiveLocation} alt="location" />
-            </button>
+            </button>*/}
     </>
-)}
-
-            
+)}          
         </div>
     );
 }
-
 
 export default UserHome;

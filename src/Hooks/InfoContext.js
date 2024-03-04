@@ -8,24 +8,33 @@ export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [userRequests, setUserRequests] = useState([]);
+  const [streamToken,setStreamtoken] = useState("")
 
   const Login = (email, password) => {
-    return axios.post("http://localhost:5000/api/auth/login", { email, password })
+    try {
+      return axios.post("http://localhost:5000/api/auth/login", { email, password })
       .then((res) => {
-        const { email, role, token, username } = res.data;
-        const UserInfo = { email, role, username };
+        console.log(res);
+        const { email, role, token, username,streamToken,id } = res.data;
+        const UserInfo = { email, role, username,id };
         console.log(UserInfo);
         setUserInfo(UserInfo);
+        console.log(streamToken)
         setUserToken(token);
+        setStreamtoken(streamToken)
         localStorage.setItem("userInfo", JSON.stringify(UserInfo));
         localStorage.setItem("userToken", token);
+        localStorage.setItem("streamToken", streamToken);
         fetchUserRequests(email);
       })
       .catch((error) => {
-        console.error("Login error", error);
+        console.error("Login error from infoContext", error);
         setLoading(false);
         throw error;
       });
+    } catch (error) {
+      console.log("error from frontend")
+    }
   };
   
 
@@ -38,15 +47,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   const fetchUserRequests = (email) => {
-    axios.get(`http://172.20.10.5:5000/api/request/userhistory?author=${email}`)
+    axios.get(`http://localhost:5000/api/request/userhistory?author=${email}`)
       .then(res => setUserRequests(res.data))
       .catch(error => console.error("Error fetching user requests", error));
   };
 
-  const register = (username, email, password, phone, role, comAssociate,areaAssigned) => {
-    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,areaAssigned })
+  const register = (username, email, password, phone, role, comAssociate,lat,long) => {
+    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,lat,long})
       .then(res => res.status === 200 && console.log("Registration successful"))
-      .catch(error => console.error("Registration error", error));
+      .catch(error => console.error("Registration error in InfoContext", error));
   };
 
  {/* const login = (email, password) => {

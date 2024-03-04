@@ -9,6 +9,7 @@ import AdminDrive from './pages/Admin/AdminDrive';
 import User from './pages/UserPages/User';
 import  AdminDash  from './pages/Admin/AdminDash';
 import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import AuthContext
+import Chat from './pages/Chat/Chat';
 
 function App() {
   const { userToken, userInfo, isLogged } = useContext(AuthContext);
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/admin" element={<AdminHome />} />
                 <Route path="/admindriver" element={<AdminDrive />} />
                 <Route path='/admindash' element={<AdminDash/>}/>
+                <Route path='/message' element={<Chat/>}/>
                 <Route path="/" element={<Navigate replace to="/admin" />} />
               </>
             )
