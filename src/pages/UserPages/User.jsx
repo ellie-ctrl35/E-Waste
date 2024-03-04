@@ -11,25 +11,23 @@ function User() {
     const [requests, setRequests] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
     const { userInfo } = useContext(AuthContext);
     const username = userInfo.username;
+    const email = userInfo.email;
+    const [history,setHistory] = useState([]);
 
-    {/*useEffect(() => {
-            const fetchRequests = async () => {
-                if (!userId) {
-                    console.log('User ID is not available');
-                    return;
-                  }
-                try {
-                    axios.get(`http://localhost:5000/requests/${userId}`)
-                    .then(response => {
-                      // Handle the response containing the requests
-                      console.log(response.data);
-                    })
-                } catch (error) {
-                    console.error('Error fetching requests:', error);
-                }
-            };
-            fetchRequests();
-    }, [userId]);*/}
+    useEffect(() => {
+        if (email) {
+            console.log('Fetching user requests for email:', email);
+            axios.get(`http://172.20.10.5:5000/api/request/userhistory?author=${email}`)
+                .then(res => {
+                    console.log("User requests:", res.data);
+                    setHistory(res.data);
+                })
+                .catch(error => {
+                    console.error("Error fetching user requests", error);
+                });
+        }
+    }, [email]);
+    
     return (
         <div className='App'>
             <Navbar />
