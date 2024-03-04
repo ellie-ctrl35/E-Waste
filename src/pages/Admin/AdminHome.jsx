@@ -135,17 +135,21 @@ function AdminHome() {
           >
             <img src={LogoutIcon} className='logout' alt='logout'/>
           </div>
-          {requests.map(
-            (request) =>
-              request.status === "Pending" ||request.TakenBy ==="anyone" &&  ( // Only render markers for requests with status 'pending'
-                <Marker
-                  key={request._id}
-                  position={{ lat: request.lat, lng: request.long }}
-                  onClick={() => handleMarkerClick(request)}
-                />
-              )
-          )}
+          {requests.map((request) => {
+    const isPendingAndAvailable = request.status === "Pending" && request.TakenBy === "anyone";
+    const markerIcon = isPendingAndAvailable 
+        ? "http://maps.google.com/mapfiles/ms/icons/red-dot.png"  // Red marker for available requests
+        : "http://maps.google.com/mapfiles/ms/icons/green-dot.png";  // Green marker otherwise
 
+    return (
+        <Marker
+            key={request._id}
+            position={{ lat: request.lat, lng: request.long }}
+            onClick={() => handleMarkerClick(request)}
+            icon={markerIcon}
+        />
+    );
+})}
           {selectedRequest && (
             <InfoWindow
               position={{ lat: selectedRequest.lat, lng: selectedRequest.long }}
