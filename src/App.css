@@ -166,14 +166,16 @@ justify-content: start;
   text-align: left;
   color: black;
 }
-.welcome-div .top button{
+.weird-btn{
   width: 17%;
   height: 80%;
+  margin-bottom: 2%;
   background-color: #179A72;
-  color: white;
   border: none;
-  border-radius: 0.2rem;
+  color: white;
   font-family: 'Inter';
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
 }
 .bottom h2{
   font-family: 'Inter';

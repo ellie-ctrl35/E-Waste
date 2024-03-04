@@ -43,7 +43,7 @@ function User() {
                 <div className='welcome-div'>
                     <div className='top'>
                         <h1>Homepage</h1>
-                        <button>Make Request</button>
+                        <button className='weird-btn'>Make Request</button>
                     </div>
                     <div className='bottom'>
                         <h2>Welcome back,<br/> 
