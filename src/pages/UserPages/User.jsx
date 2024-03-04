@@ -35,10 +35,6 @@ function User() {
             <Navbar />
             <div className='right-side'>
                 <div className='top-div'>
-                    <div className='search-container'>
-                        <img src={searchIcon} alt="search" />
-                        <input type="text" placeholder="Search for a location" />
-                    </div>
                     <div className='icongroup'>
                         <img src={notification} alt='notification'/>
                         <Avatar name={username} size="40" round={true} />
@@ -50,8 +46,11 @@ function User() {
                         <button>Make Request</button>
                     </div>
                     <div className='bottom'>
-                        <h2>Welcome back,<br/> <span>
-                            </span><br/><br/><br/>Get a snipshot of your request history</h2>
+                        <h2>Welcome back,<br/> 
+                        <span>
+                            {username}
+                        </span>
+                        <br/><br/><br/>Get a snipshot of your request history</h2>
                     </div>
                 </div>
 
