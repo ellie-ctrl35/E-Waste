@@ -87,8 +87,8 @@ function AdminHome() {
   }
   const infoWindowStyle = {
     width: "250px", // Set your desired width
-    height: "150px", // Set your desired height
-    // Add any other styling you need here
+    height: "200px", // Set your desired height
+  
   };
 
   const handleMarkerClick = (request) => {
@@ -155,25 +155,27 @@ function AdminHome() {
               position={{ lat: selectedRequest.lat, lng: selectedRequest.long }}
               onCloseClick={() => setSelectedRequest(null)}
             >
-              <div style={{ ...infoWindowStyle, background: "dodgerblue" }}>
-                <h3 style={{ color: "black" }}>
-                  Username: {selectedRequest.author}
+              <div style={{ ...infoWindowStyle, background: "#D9D9D94D" }}>
+                <h3 style={{textAlign:"center",color:"black",fontSize:"0.7rem"}}>Haul Details</h3>
+                <h3 style={{ color: "black",fontSize:"0.7rem" }}>
+                  Request From.........{selectedRequest.author}
                 </h3>
-                <p style={{ color: "black" }}>
+                <p style={{ color: "black",textAlign:"center" }}>
                   Date Created: {selectedRequest.createdAt}
                 </p>
                 <p style={{ color: "black" }}>
                   Status: {selectedRequest.status}
                 </p>
-                <label htmlFor="dropdownMenu">Assign driver:</label>
-                <select id="dropdownMenu" name="dropdown">
+                <label htmlFor="dropdownMenu" style={{color:"black",fontWeight:500}}>Assign driver</label><br/>
+                <select style={{border:"none",background:"white",outline:"none",width:"180px",height:"30px"}}  id="dropdownMenu" name="dropdown">
+                <option value="" disabled selected>Select a driver...</option>
                   {drivers.map((driver) => (
                     <option key={driver.id} value={driver.id}>
-                      {driver.username}{" "}
+                      {driver.username}{""}
                     </option>
                   ))}
                 </select>
-                <button onClick={AssignDriver} style={{width:"60%",height:"20%",fontSize:"0.4rem"}}>Assign Haul</button>
+                <button onClick={AssignDriver} style={{width:"60%",height:"17%",fontSize:"0.6rem",marginRight:"50px"}}>Assign Haul</button>
               </div>
             </InfoWindow>
           )}

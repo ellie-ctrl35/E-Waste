@@ -53,7 +53,7 @@ const BarChart = () => {
         data: requestData,
         backgroundColor: '#179A72',
         borderColor: 'rgba(53, 162, 235, 1)',
-        borderWidth: 1,
+        borderWidth: 0.5,
       },
     ],
   };

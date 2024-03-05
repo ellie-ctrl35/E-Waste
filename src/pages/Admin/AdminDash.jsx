@@ -30,9 +30,6 @@ function AdminDash() {
               <div className='dashbottom'>
                 <div className='bottomdash-left'></div>
                 <div className='doughnut-div'>
-                  <div className='doughnut-txt'>
-
-                  </div>
                   <div className='doughnut'>
                   <PieChart/>
                   </div>

@@ -1,5 +1,5 @@
 import {useState,useContext,useEffect,useMemo} from 'react'
-import'../../App.css';
+import'./Driver.css'
 import AdminNavbar from '../../components/AdminNavbar';
 import notification from '../../resources/notification.png'
 import Avatar from 'react-avatar'
@@ -85,39 +85,58 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
             <Avatar size={40} name={Username} round/>
           </div>
         </div>
-        <div className='bigdiv'>
-          <div className='leftbigdiv'>
-            <div className='countdiv'>
-              <h1>{drivers.length}</h1>
-            </div>
-            <div className='driverstb'>
-              <ul>
-                {
-                  drivers.map((driver)=>{
-                    return(
-                      <li>{driver.username}</li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
+      {/*<div className='bigdiv'>
+        <div className='leftbigdiv'>
+          <div className='countdiv'>
+            <h1>{drivers.length}</h1>
           </div>
-          <form onSubmit={AddNewDriver}>
-            <label className='labelS'>Add a driver to your company</label>
-            <label className='labelH'>Name*</label>
-            <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
-            <label className='labelH'>Email*</label>
-            <input onChange={(e)=>setEmail(e.target.value)} className='driverInput' type="text" />
-            <label className='labelH'>Phone Number*</label>
-            <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
-            <label className='labelH'>Assigned Password*</label>
-            <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
-            <button className='driverBtn'>Next</button>
-          </form>
+          <div className='driverstb'>
+            <ul>
+              {
+                drivers.map((driver)=>{
+                  return(
+                    <li>{driver.username}</li>
+                  )
+                })
+              }
+            </ul>
+          </div>
         </div>
+        <form onSubmit={AddNewDriver}>
+          <label className='labelS'>Add a driver to your company</label>
+          <label className='labelH'>Name*</label>
+          <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
+          <label className='labelH'>Email*</label>
+          <input onChange={(e)=>setEmail(e.target.value)} className='driverInput' type="text" />
+          <label className='labelH'>Phone Number*</label>
+          <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
+          <label className='labelH'>Assigned Password*</label>
+          <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
+          <button style={{}} className='driverBtn'>Next</button>
+        </form>
       </div>
-      <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"20.5%",top:"14.3%"}}>
-        <GoogleMap onDblClick={handlecircle} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}>
+      */}
+    </div>
+      <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"22%",top:"16%"}}>
+        <GoogleMap onDblClick={handlecircle} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
+         options={{
+          streetViewControl: false,
+          scaleControl: false,
+          mapTypeControl: false,
+          panControl: false,
+          zoomControl: false,
+          rotateControl: false,
+          fullscreenControl: false,
+          styles: [
+              {
+                  featureType: "poi", // Points of interest
+                  elementType: "labels",
+                  stylers: [{ visibility: "off" }],
+              },
+              // ... Add more feature types as needed
+          ]
+      }}
+        >
         {lat !== 0 && long!==0 && (
             <>
               <Marker position={{lat,lng:long}} />
@@ -136,6 +155,19 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
           )}
         </GoogleMap>
       </div>
+
+      <form style={{position:"absolute",width:"27vw",height:'80vh',top:'18%',left:"72%",background:"dodgerblue"}} onSubmit={AddNewDriver}>
+          <label className='labelS'>Add a driver to your company</label>
+          <label className='labelH'>Name*</label>
+          <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
+          <label className='labelH'>Email*</label>
+          <input onChange={(e)=>setEmail(e.target.value)} className='driverInput' type="text" />
+          <label className='labelH'>Phone Number*</label>
+          <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
+          <label className='labelH'>Assigned Password*</label>
+          <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
+          <button style={{}} className='driverBtn'>Next</button>
+        </form>
     </div>
   )
 }
