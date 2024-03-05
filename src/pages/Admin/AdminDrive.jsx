@@ -117,7 +117,7 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
       </div>
       */}
     </div>
-      <div style={{position:'absolute',background:'yellow',height:'81vh',width:'50vw',left:"22%",top:"16%"}}>
+      <div style={{position:'absolute',background:'yellow',height:'81vh',width:'48vw',left:"22%",top:"16%"}}>
         <GoogleMap onDblClick={handlecircle} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
          options={{
           streetViewControl: false,
@@ -156,17 +156,17 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
         </GoogleMap>
       </div>
 
-      <form style={{position:"absolute",width:"27vw",height:'80vh',top:'18%',left:"72%",background:"dodgerblue"}} onSubmit={AddNewDriver}>
-          <label className='labelS'>Add a driver to your company</label>
-          <label className='labelH'>Name*</label>
-          <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
-          <label className='labelH'>Email*</label>
-          <input onChange={(e)=>setEmail(e.target.value)} className='driverInput' type="text" />
-          <label className='labelH'>Phone Number*</label>
-          <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
-          <label className='labelH'>Assigned Password*</label>
-          <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
-          <button style={{}} className='driverBtn'>Next</button>
+      <form style={{position:"absolute",width:"27vw",height:'80vh',top:'16%',left:"72%",background:"dodgerblue"}} onSubmit={AddNewDriver}>
+        <label style={{textAlign:"center"}} className='labelS'>Add a driver to your company</label>
+        <label className='labelH'>Name*</label>
+        <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
+        <label className='labelH'>Email*</label>
+        <input onChange={(e)=>setEmail(e.target.value)} className='driverInput' type="text" />
+        <label className='labelH'>Phone Number*</label>
+        <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
+        <label className='labelH'>Assigned Password*</label>
+        <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
+        <button style={{}}>Add Driver</button>
         </form>
     </div>
   )
