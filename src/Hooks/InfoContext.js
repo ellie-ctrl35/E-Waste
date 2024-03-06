@@ -15,8 +15,8 @@ export const AuthProvider = ({ children }) => {
       return axios.post("http://localhost:5000/api/auth/login", { email, password })
       .then((res) => {
         console.log(res);
-        const { email, role, token, username,streamToken,id } = res.data;
-        const UserInfo = { email, role, username,id };
+        const { email, role, token, username,streamToken,id,comAssociate } = res.data;
+        const UserInfo = { email, role, username,id,comAssociate };
         console.log(UserInfo);
         setUserInfo(UserInfo);
         console.log(streamToken)

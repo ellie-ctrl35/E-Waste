@@ -61,7 +61,19 @@ const BarChart = () => {
   const options = {
     scales: {
       y: {
-        beginAtZero: true
+        beginAtZero: true,
+        grid: {
+          drawBorder: false, // This removes the axis border
+          drawOnChartArea: false, // This removes the grid lines
+          drawTicks: false, // This can remove the tick marks, if desired
+        }
+      },
+      x: {
+        grid: {
+          drawBorder: false,
+          drawOnChartArea: false,
+          drawTicks: false,
+        }
       }
     },
     responsive: true,
