@@ -30,7 +30,7 @@ const AdminDrive = () => {
   const [username,setUsername]= useState('');
   const [phone,setPhone]=useState("");
   const [password,setPassword]=useState('');
-  const [drivers,setDrivers]=useState([]); // Assuming drivers is an array of objects with a username field
+ // Assuming drivers is an array of objects with a username field
   const comAssociate = Username;
   const [lat, setlat] = useState(null);
   const [long, setlong] = useState(null);
@@ -55,19 +55,6 @@ const AdminDrive = () => {
     setlat(null);
     setlong(null);
   }
- 
-  useEffect(()=>{
-    const getDriversCount = async () =>{
-      console.log(comAssociate)
-      await axios.post('http://localhost:5000/api/drivers',{comAssociate})
-      .then((res)=>{
-        console.log(res.data)
-        setDrivers(res.data)
-      })
-    }
-
-    getDriversCount();
-  },[comAssociate])
 
 const { isLoaded } = useJsApiLoader(loaderOptions);
     if (!isLoaded) {
