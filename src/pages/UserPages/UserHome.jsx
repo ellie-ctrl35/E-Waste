@@ -166,9 +166,9 @@ function UserHome() {
                 <div className='buttonContainer'>
                   <div className='con1'>
                     <p style={{fontSize:'1.5rem',width:"70%",height:"40%",margin:"0",padding:"0",textAlign:"start",color:"black",fontWeight:500}}>Put in a Haul Request</p>
-                    <button onClick={getUserLocation} className='btn3'>Make Request</button>
+                    <button onClick={sendLocationData} className='btn3'>Make Request</button>
                   </div>
-                  <button onClick={sendLocationData} className='btn2'>Use Live Location</button>
+                  <button onClick={getUserLocation} className='btn2'>Use Live Location</button>
                 </div>
               <div className='Mapbox'>
                 <GoogleMap
