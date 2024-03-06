@@ -362,36 +362,6 @@ justify-content: start;
   flex-direction: column;
   border-radius: 0.3rem;
 }
-.labelS{
-  text-align: center;
-  color: #179A72;
-  font-size: 0.9rem;
-  font-family: 'Inter';
-  font-weight: 700;
-  margin-bottom: 7%;
-}
-.labelH{
-  color: #179A72;
-  font-size: 0.7rem;
-  font-family: 'Inter';
-  margin-left:7%;
-  font-weight: 700;
-}
-.driverInput{
-  width: 80%;
-  height: 4.5%;
-  background-color: #ECECEC;
-  outline: none;
-  border: none;
-  align-self: center;
-}
-.driverBtn{
-  background-color: #179A72;
-  width: 82%;
-  height: 7%;
-  border-radius: 0.3rem;
-  align-self: center;
-}
 .dashtop{
   width: 10%;
   height: 6%;
@@ -443,6 +413,7 @@ justify-content: start;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 11%;
 }
 .location-btn{
 

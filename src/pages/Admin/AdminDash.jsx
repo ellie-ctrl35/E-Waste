@@ -30,6 +30,7 @@ function AdminDash() {
               <div className='dashbottom'>
                 <div className='bottomdash-left'></div>
                 <div className='doughnut-div'>
+                  <h1 style={{position:"absolute",color:"black",fontSize:"1.2rem",marginLeft:"0.7rem",fontFamily:"Inter"}}>Total - </h1>
                   <div className='doughnut'>
                   <PieChart/>
                   </div>

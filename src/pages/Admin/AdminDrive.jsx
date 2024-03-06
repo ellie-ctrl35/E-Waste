@@ -1,10 +1,9 @@
 import {useState,useContext,useEffect,useMemo} from 'react'
-import'./Driver.css'
+import'./Driver.css';
 import AdminNavbar from '../../components/AdminNavbar';
 import notification from '../../resources/notification.png'
 import Avatar from 'react-avatar'
 import { AuthContext } from '../../Hooks/InfoContext';
-import axios from 'axios';
 import {useJsApiLoader,GoogleMap,Marker,Circle} from '@react-google-maps/api';
 
 const center = {
