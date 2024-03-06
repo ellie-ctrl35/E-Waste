@@ -3,11 +3,114 @@ body{
     height: 100%;
     display: flex;
     flex-direction: row;
-    background-color: #b7be4a;
 }
 .right-side{
     width: 80%;
     height: 100%;
     display: flex;
-    background-color: #473983;
+    background-color: #F4F6F6;
+}
+.modal{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #51515180;
+    margin-left: 20%;
+}
+.modal form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: 50%;
+    padding-right:8% ;
+}
+.txt1{
+    color: #009065;
+    font-size: 1.4rem;
+    text-align: center;
+    font-family: 'Inter';
+}
+.txt2{
+    color: #00000080;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    text-align: center;
+    font-family: 'Inter';
+}
+.dropdown{
+    width: 75%;
+    height: 2.5rem;
+    border: #857e7e80 1px solid;
+    border-radius: 0.5rem;
+    outline: none;
+    margin-left: 7.5rem;
+    margin-top: 2.5rem;
+    color: #857e7e80;
+    font-size: 1rem;
+    padding: 0.2rem;
+}
+.btn1{
+    width: 70%;
+    height: 2.5rem;
+    background-color: #179A72;
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    margin-top: 2.5rem;
+    margin-left: 7.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 15%;
+}
+.txt3{
+    color: black;
+    font-size: 1.5rem;
+    font-family: 'Inter';
+    width: 50%;
+    line-height: normal;
+    margin-top: 3rem;
+}
+.btn2{
+    width: 20%;
+    height: 2.5rem;
+    background-color: #179A72;
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    margin-top: 3rem;
+    margin-left: 7.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+.con1{
+    width: 50%;
+    background-color: yellow;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.btn3{
+    width: 40%;
+    height: 2.5rem;
+    background-color: #179A72;
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
 }

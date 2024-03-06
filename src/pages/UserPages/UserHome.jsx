@@ -1,15 +1,13 @@
 import {useEffect,useMemo,useState,useContext} from 'react';
-import'../../App.css';
 import {useJsApiLoader,GoogleMap,Marker,Autocomplete} from '@react-google-maps/api';
-import backBtn from '../../resources/backBtn.png';
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import Avatar from 'react-avatar';
-import LiveLocation from '../../resources/LiveLocation.png';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
 import { AuthContext } from '../../Hooks/InfoContext';
+import './User.css';
 
 const center = {
     lat:   5.614818,
@@ -55,13 +53,15 @@ function UserHome() {
                 e.preventDefault();
                 handleTypeSelect(e.target.type.value);
             }}>
-                <label htmlFor="type">Select Waste Type:</label>
-                <select name="type" id="type">
+                <label className='txt1' htmlFor="type">Select Waste Type:</label>
+                <label className='txt2' htmlFor="type">Provide the category of waste by selecting from the dropdown</label>
+                <select className='dropdown' name="type" id="type">
+                    <option disabled selected hidden>Select Waste Type</option>
                     <option value="Plastic">Plastic</option>
                     <option value="Metal">Metal</option>
                     <option value="Paper">Paper</option>
                 </select>
-                <button type="submit">Submit</button>
+                <button className='btn1' type="submit">Submit Response</button>
             </form>
         </div>
     );
@@ -153,9 +153,9 @@ function UserHome() {
                             setAutocompleteInstance(autocomplete);
                         }}
                         onPlaceChanged={onPlaceSelected}
-                    >
-                              <input type="text" placeholder="Search for a location" />
-                              </Autocomplete>
+                        >
+                            <input type="text" placeholder="Search for a location" />
+                        </Autocomplete>
 
                     </div>
                     <div className='icongroup'>
@@ -163,15 +163,12 @@ function UserHome() {
                         <Avatar name={username} size="40" round={true} />
                     </div>
                 </div>
-                <div className='mid-div'>
-                    <div className='mid-div-bottom'>
-                       <div className='texts'>
-                        <h1>Put in a Haul Request</h1>
-                        <h2>Select a location from map for waste pickup</h2>
-                       </div>
-                       <button onClick={sendLocationData} className='request-btn'>Use Live Location</button>
-                       <button onClick={sendLocationData} className='request-btn'>Make a Request</button>
-                    </div>
+                <div className='buttonContainer'>
+                  <div className='con1'>
+                    <p style={{fontSize:'1.5rem',width:"70%",height:"40%",background:"dodgerblue",margin:"0",padding:"0"}}>Put in a Haul Request</p>
+                    <button className='btn3'>Make Request</button>
+                  </div>
+                  <button className='btn2'>Use Live Location</button>
                 </div>
               <div className='Mapbox'>
                 <GoogleMap
@@ -180,6 +177,7 @@ function UserHome() {
                     fullscreenControl: false,
                   }}
                   showUserLocation={true}
+                  followUserLocation={true}
                  zoom={11.5} center={center} mapContainerStyle={{width:"100%",height:"100%",borderRadius:"0.6rem"}}
                  onDblClick={handleMapClick}
                 >

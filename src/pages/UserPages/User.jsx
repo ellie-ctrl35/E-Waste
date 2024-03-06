@@ -1,12 +1,10 @@
 import Navbar from '../../components/Navbar';
 import'../../App.css';
 import Avatar from 'react-avatar';
-import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
 import { AuthContext } from '../../Hooks/InfoContext';
 import {useState,useContext,useEffect} from 'react';
 import axios from 'axios';
-import TimeAgo from 'timeago'
 
 function User() {
     const [requests, setRequests] = useState([]); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -18,7 +16,7 @@ function User() {
     useEffect(() => {
         if (email) {
             console.log('Fetching user requests for email:', email);
-            axios.get(`http://172.20.10.5:5000/api/request/userhistory?author=${email}`)
+            axios.get(`http://localhost:5000/api/request/userhistory?author=${email}`)
                 .then(res => {
                     console.log("User requests:", res.data);
                     setHistory(res.data);
