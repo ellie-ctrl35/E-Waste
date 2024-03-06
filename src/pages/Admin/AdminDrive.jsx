@@ -156,7 +156,7 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
         </GoogleMap>
       </div>
 
-      <form style={{position:"absolute",width:"27vw",height:'80vh',top:'16%',left:"72%",background:"dodgerblue"}} onSubmit={AddNewDriver}>
+      <form style={{position:"absolute",width:"27vw",height:'80vh',top:'16%',left:"72%",background:"white",borderRadius:"0.4rem"}} onSubmit={AddNewDriver}>
         <label style={{textAlign:"center"}} className='labelS'>Add a driver to your company</label>
         <label className='labelH'>Name*</label>
         <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
@@ -166,7 +166,7 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
         <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
         <label className='labelH'>Assigned Password*</label>
         <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
-        <button style={{}}>Add Driver</button>
+        <button style={{marginTop:"5%"}}>Add Driver</button>
         </form>
     </div>
   )
