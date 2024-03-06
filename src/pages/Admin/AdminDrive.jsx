@@ -71,37 +71,7 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
             <Avatar size={40} name={Username} round/>
           </div>
         </div>
-      {/*<div className='bigdiv'>
-        <div className='leftbigdiv'>
-          <div className='countdiv'>
-            <h1>{drivers.length}</h1>
-          </div>
-          <div className='driverstb'>
-            <ul>
-              {
-                drivers.map((driver)=>{
-                  return(
-                    <li>{driver.username}</li>
-                  )
-                })
-              }
-            </ul>
-          </div>
-        </div>
-        <form onSubmit={AddNewDriver}>
-          <label className='labelS'>Add a driver to your company</label>
-          <label className='labelH'>Name*</label>
-          <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
-          <label className='labelH'>Email*</label>
-          <input onChange={(e)=>setEmail(e.target.value)} className='driverInput' type="text" />
-          <label className='labelH'>Phone Number*</label>
-          <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
-          <label className='labelH'>Assigned Password*</label>
-          <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
-          <button style={{}} className='driverBtn'>Next</button>
-        </form>
-      </div>
-      */}
+      
     </div>
       <div style={{position:'absolute',background:'yellow',height:'81vh',width:'48vw',left:"22%",top:"16%"}}>
         <GoogleMap onDblClick={handlecircle} zoom={10} center={center} mapContainerStyle={{width:"100%",height:"100%"}}
@@ -143,14 +113,14 @@ const { isLoaded } = useJsApiLoader(loaderOptions);
       </div>
 
       <form style={{position:"absolute",width:"27vw",height:'80vh',top:'16%',left:"72%",background:"white",borderRadius:"0.4rem"}} onSubmit={AddNewDriver}>
-        <label style={{textAlign:"center"}} className='labelS'>Add a driver to your company</label>
-        <label className='labelH'>Name*</label>
+        <label style={{textAlign:"center",color:"#179A72",fontSize:"0.9rem",marginRight:"17%"}} className='labelS'>Add a driver to your company</label>
+        <label style={{color:"#179A72"}} className='labelH1'>Name*</label>
         <input onChange={(e)=>setUsername(e.target.value)} className='driverInput' type="text" />
-        <label className='labelH'>Email*</label>
+        <label className='labelH1'>Email*</label>
         <input onChange={(e)=>setEmail(e.target.value)} className='driverInput' type="text" />
-        <label className='labelH'>Phone Number*</label>
+        <label className='labelH1'>Phone Number*</label>
         <input onChange={(e)=>setPhone(e.target.value)} className='driverInput' type="text" />
-        <label className='labelH'>Assigned Password*</label>
+        <label className='labelH1'>Assigned Password*</label>
         <input onChange={(e)=>setPassword(e.target.value)} className='driverInput' type="text" />
         <button style={{marginTop:"5%"}}>Add Driver</button>
         </form>
