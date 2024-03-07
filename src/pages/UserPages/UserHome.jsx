@@ -62,6 +62,11 @@ function UserHome() {
                     <option value="Paper">Paper</option>
                 </select>
                 <button className='btn1' type="submit">Submit Response</button>
+                <div>
+
+                    <p style={{color:"green"}}>Try Ecohaul's AI waste segregation Tool</p>
+                    <Link to="/aiPage">Click To Use</Link>
+                </div>
             </form>
         </div>
     );

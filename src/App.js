@@ -10,6 +10,7 @@ import User from './pages/UserPages/User';
 import  AdminDash  from './pages/Admin/AdminDash';
 import { AuthContext, AuthProvider } from './Hooks/InfoContext'; // Import AuthContext
 import Chat from './pages/Chat/Chat';
+import AiPage from './pages/UserPages/AiPage';
 
 function App() {
   const { userToken, userInfo, isLogged } = useContext(AuthContext);
@@ -28,6 +29,7 @@ function App() {
               <>
                 <Route path="/makerequest" element={<UserHome />} />
                 <Route path="/userhome" element={<User />} />
+                <Route path="/aiPage" element={<AiPage />} />
                 <Route path="/" element={<Navigate replace to="/userhome" />} />
               </>
             ) : (

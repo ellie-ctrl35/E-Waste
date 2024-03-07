@@ -115,3 +115,8 @@ body{
     outline: none;
     margin-left: 0;
 }
+.aicontent{
+    height: 90%;
+    width: 90%;
+    background-color: rgb(107, 107, 17);
+}
