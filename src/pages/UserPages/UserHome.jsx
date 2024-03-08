@@ -55,6 +55,17 @@ function UserHome() {
         };
         fetchAirQualityData(europeBounds, 'Europe');
     }, []);
+
+    // Add your own images for each AQI level
+const aqiImages = {
+    good: '../../resources/Good.png',
+    moderate: '../../resources/Moderate.png',
+    unhealthyforPeople: '../../resources/Unhealthy.png',
+    Unhealthy: '../../resources/UnhealthyV.png',
+    VeryUnhealthy: '../../resources/UnhealthyVV.png',
+    hazardous: '../../resources/Hazardous.png',
+  };
+  
     
     const WasteTypeModal = () => (
         <div className="modal">
@@ -90,8 +101,8 @@ function UserHome() {
     }), []);
 
     const handleMapClick = (event) => {
-         setLong(event.latLng.lng());
-         setLat(event.latLng.lat());
+        setLong(event.latLng.lng());
+        setLat(event.latLng.lat());
     };
 
     const sendLocationData = () => {
