@@ -43,7 +43,7 @@ function AdminHome() {
   const getDriversCount = async () => {
     console.log(comAssociate);
     await axios
-      .post("http://localhost:5000/api/drivers", { comAssociate })
+      .post("http://localhost:8080/api/drivers", { comAssociate })
       .then((res) => {
         console.log(res.data);
         setDrivers(res.data);
@@ -71,7 +71,7 @@ function AdminHome() {
 
   const getRequests = () => {
     axios
-      .get("http://localhost:5000/api/request/allrequests")
+      .get("http://localhost:8080/api/request/allrequests")
       .then((response) => {
         setRequest(response.data);
         console.log("Success:", response.data);

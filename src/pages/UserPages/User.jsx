@@ -16,7 +16,7 @@ function User() {
     useEffect(() => {
         if (email) {
             console.log('Fetching user requests for email:', email);
-            axios.get(`http://localhost:5000/api/request/userhistory?author=${email}`)
+            axios.get(`http://localhost:8080/api/request/userhistory?author=${email}`)
                 .then(res => {
                     console.log("User requests:", res.data);
                     setHistory(res.data);

@@ -8,35 +8,44 @@ export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [userRequests, setUserRequests] = useState([]);
-  const [streamToken,setStreamtoken] = useState("")
+  const [streamToken, setStreamtoken] = useState("");
 
   const Login = (email, password) => {
+    console.log('this function triggered');
     try {
-      return axios.post("http://localhost:5000/api/auth/login", { email, password })
-      .then((res) => {
-        console.log(res);
-        const { email, role, token, username,streamToken,id,comAssociate } = res.data;
-        const UserInfo = { email, role, username,id,comAssociate };
-        console.log(UserInfo);
-        setUserInfo(UserInfo);
-        console.log(streamToken)
-        setUserToken(token);
-        setStreamtoken(streamToken)
-        localStorage.setItem("userInfo", JSON.stringify(UserInfo));
-        localStorage.setItem("userToken", token);
-        localStorage.setItem("streamToken", streamToken);
-        fetchUserRequests(email);
-      })
-      .catch((error) => {
-        console.error("Login error from infoContext", error);
-        setLoading(false);
-        throw error;
-      });
+      return axios
+        .post("http://localhost:8080/api/auth/login", { email, password })
+        .then((res) => {
+          console.log(res);
+          const {
+            email,
+            role,
+            token,
+            username,
+            streamToken,
+            id,
+            comAssociate,
+          } = res.data;
+          const UserInfo = { email, role, username, id, comAssociate };
+          console.log(UserInfo);
+          setUserInfo(UserInfo);
+          console.log(streamToken);
+          setUserToken(token);
+          setStreamtoken(streamToken);
+          localStorage.setItem("userInfo", JSON.stringify(UserInfo));
+          localStorage.setItem("userToken", token);
+          localStorage.setItem("streamToken", streamToken);
+          fetchUserRequests(email);
+        })
+        .catch((error) => {
+          console.error("Login error from infoContext", error);
+          setLoading(false);
+          throw error;
+        });
     } catch (error) {
-      console.log("error from frontend")
+      console.log("error from frontend");
     }
   };
-  
 
   // Helper function to clear user info and token
   const clearUserInfo = () => {
@@ -47,18 +56,43 @@ export const AuthProvider = ({ children }) => {
   };
 
   const fetchUserRequests = (email) => {
-    axios.get(`http://localhost:5000/api/request/userhistory?author=${email}`)
-      .then(res => setUserRequests(res.data))
-      .catch(error => console.error("Error fetching user requests", error));
+    axios
+      .get(`http://localhost:8080/api/request/userhistory?author=${email}`)
+      .then((res) => setUserRequests(res.data))
+      .catch((error) => console.error("Error fetching user requests", error));
   };
 
-  const register = (username, email, password, phone, role, comAssociate,lat,long) => {
-    return axios.post("http://localhost:5000/api/auth/register", { username, email, password, phone, role, comAssociate,lat,long})
-      .then(res => res.status === 200 && console.log("Registration successful"))
-      .catch(error => console.error("Registration error in InfoContext", error));
+  const register = (
+    username,
+    email,
+    password,
+    phone,
+    role,
+    comAssociate,
+    lat,
+    long
+  ) => {
+    return axios
+      .post("http://localhost:8080/api/auth/register", {
+        username,
+        email,
+        password,
+        phone,
+        role,
+        comAssociate,
+        lat,
+        long,
+      })
+      .then(
+        (res) => res.status === 200 && console.log("Registration successful")
+      )
+      .catch((error) =>
+        console.error("Registration error in InfoContext", error)
+      );
   };
 
- {/* const login = (email, password) => {
+  {
+    /* const login = (email, password) => {
     return axios.post("http://localhost:5000/api/auth/login", { email, password })
       .then((res) => {
         const { email, role, token, username } = res.data;
@@ -71,7 +105,8 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
         throw error;
       });
-  };*/}
+  };*/
+  }
 
   const logout = () => {
     setLoading(true);
@@ -89,10 +124,23 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
-useEffect(() =>{ isLogged()}, []);
+  useEffect(() => {
+    isLogged();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ Login, logout, isLoading, userToken, userInfo, userRequests, register,isLogged}}>
+    <AuthContext.Provider
+      value={{
+        Login,
+        logout,
+        isLoading,
+        userToken,
+        userInfo,
+        userRequests,
+        register,
+        isLogged,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

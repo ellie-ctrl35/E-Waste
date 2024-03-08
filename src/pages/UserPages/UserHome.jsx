@@ -92,7 +92,7 @@ function UserHome() {
             type
         };
 
-        axios.post('http://localhost:5000/api/request', data)
+        axios.post('http://localhost:8080/api/request', data)
             .then(response => {
                 navigate('/userhome'); 
                 console.log(response.data)

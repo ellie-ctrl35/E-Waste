@@ -18,7 +18,7 @@ function Login() {
         .then(() => {
             navigate('/'); // Navigate to the desired route after successful login
           })
-          .catch(err => {
+        .catch(err => {
             console.log('Login error: from Login.jsx', err);
         });
     };
