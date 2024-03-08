@@ -1,170 +1,181 @@
-.main{
-    height: 100vh;
-    width: 100vw;
-    background-color: rgb(244, 235, 235);
-    margin: auto;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cantata+One&family=Inter:wght@100..900&display=swap");
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  background-color: #F4F6F6;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
-.aicontent{
-    height: 90vh;
-    width: 90vw;
-    background-color: rgb(244, 235, 235);
+
+.aicontent {
+  height: 90vh;
+  width: 90vw;
+  background-color: #F4F6F6;
   display: flex;
   flex-direction: column;
   margin: auto;
-    align-items: center;
-    justify-content: center;
 }
-.aiheading{
- width: 100%;
+
+.aiheading {
+  width: 100%;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+    width: 90vw;
+    height: 55vh;
     margin-bottom: 20px;
 }
 
-.aiheading h1{
-    font-family: CantoraOne;
-   font-size: 30px;
-    font-weight: 500;
-   margin: 0;
-  
-    
-}
-.aiheadingg{
-    width: 100%;
-       margin-bottom: 20px;
-       font-family: CantoraOne;
-       font-size: 30px;
-        font-weight: 500;
-       margin: 0;
-   }
-   
-   
-.aiheading p{
-  
-  
-    margin: 0;   
-}
-.aiupload{
-    height: 50%;
-    width: 90vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(181, 181, 179);
-}
-.aibtn{
-   display: flex;
-   flex-direction: row;
-   height: 4%;
-   width: 50%;
- 
-}
-.cancelbtn{
-    height: 45px;
-    width: 500px;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 19px;
-    letter-spacing: 0em;
-}
-.uploadbtn{
-    height: 45px;
-    width: 500px;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 19px;
-    letter-spacing: 0em;
-}
-.results{
-    display: flex;
-    flex-direction: row;
-    margin-right: 900px;
-}
-.prediction{
-    width: 250px;
-    height: 40px;
-    background-color: rgb(255, 255, 255);
-    margin: 0;
-}
-.redirect{
-  
-    margin: 0;
+.aiheading h1 {
+  font-family: CantoraOne;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0;
 }
 
-.aiupload-ctn{
-margin: auto;
+.aiheadingg {
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: "CantoraOne", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0;
+}
 
-height: 300px;
-width: 50%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+.aiheading p {
+  margin: 0;
+  font-family: Inter;
+}
 
+.aiupload {
+  height: 350px;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  border: 1px;
+  border-style: dashed;
+}
+
+.aibtn {
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cancelbtn,
+.uploadbtn {
+  height: 45px;
+  width: 300px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 19px;
+  letter-spacing: 0em;
+  margin: 0;
+}
+
+.results {
+  display: flex;
+  flex-direction: row;
+  margin-right: 900px; /* This value might need adjustment based on your layout */
+  background: white;
+  width: 400px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.prediction {
+  width: 250px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  margin: 0;
+  border-radius: 10px;
+}
+
+.redirect {
+  margin: 0;
+}
+
+.aiupload-ctn {
+  margin: auto;
+  height: 300px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .aiupload-ctn1 {
-    display: flex;
-    flex-direction: column;
-    height: 123px;
-    width: 294px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 123px;
+  width: 294px;
+  justify-content: center;
+  align-items: center;
 }
 
-.aiupload-ctn1 button{
-    margin-left: auto;
-    margin-right: auto;
-    width: 190px;
-    height: 45px;
-    border-radius: 10px;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: left;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-
-
+.aiupload-ctn1 button {
+  margin-left: auto;
+  margin-right: auto;
+  width: 190px;
+  height: 45px;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center; /* Adjusted from 'text-align: left;' */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
-.aiupload-ctn img{
-   height: 100px;
-   width: 100px;
-   margin-bottom: 15px ;
-    
-    }
 
-.ctn1-p1{
+.aiupload-ctn img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.ctn1-p1 {
   margin-top: 0;
-  margin-bottom: 0 ;
-  font-family: Inter;
+  margin-bottom: 15px; /* Corrected from duplicate declaration */
+  font-family: "Inter", sans-serif;
   font-size: 20px;
-  font-weight: 200; 
+  font-weight: 200;
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
-  margin-bottom: 15px;
-     
 }
 
+.ctn1-p2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
 
-.ctn1-p2{
-    margin-top: 0;
-    margin-bottom: 0 ;
-    font-family: Inter;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-
-       
-  }
