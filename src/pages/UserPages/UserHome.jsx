@@ -27,25 +27,34 @@ function UserHome() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchWorldwideAirQualityData()
-        console.log(airQualityData)
-    }, []);
+        const fetchAirQualityData = async (bounds, region) => {
+            const token = 'baeb66a7595a718c9712b72174a654b5891e92a4'; // Replace with your token
+            const apiUrl = `https://api.waqi.info/map/bounds?token=${token}&latlng=${bounds.latlng}`;
 
-    const fetchWorldwideAirQualityData = async () => {
-        const token = 'baeb66a7595a718c9712b72174a654b5891e92a4'; // Replace with your token
-        const bounds = {
-            latlng: '-35,37,-17,51' // Latitude and Longitude bounds for Africa
+            try {
+                const response = await axios.get(apiUrl);
+                console.log(`Air Quality Data for ${region}:`, response.data);
+                setAirQualityData(prevData => [
+                    ...prevData,
+                    { region, data: response.data },
+                ]);
+            } catch (error) {
+                console.error(`Error fetching data for ${region}:`, error);
+            }
         };
-        const apiUrl = `https://api.waqi.info/map/bounds?token=${token}&latlng=${bounds.latlng}`;
-    
-        
-        axios.get(apiUrl)
-        .then((res)=>{
-            console.log(res);
-            setAirQualityData(res);
-        })
-            
-    };
+
+        // Bounds for Africa
+        const africaBounds = {
+            latlng: '-37.5,-18.5,38.5,29.5',
+        };
+        fetchAirQualityData(africaBounds, 'Africa');
+
+        // Bounds for Europe
+        const europeBounds = {
+            latlng: '35,-32,71,41',
+        };
+        fetchAirQualityData(europeBounds, 'Europe');
+    }, []);
     
     const WasteTypeModal = () => (
         <div className="modal">
