@@ -27,6 +27,11 @@ function User() {
         }
     }, [email]);
 
+    const shortenId = (fullId) => {
+        // You can customize the length of the shortened ID
+        const length = 8;
+        return fullId.substring(0, length) + 'WTR';
+    };
 
     return (
         <div className='App'>
@@ -63,7 +68,7 @@ function User() {
                  <ul>
                         {history.map(request => (
                             <div key={request._id} className='history-div'>
-                                <span>{request._id}</span>
+                                <span>{shortenId(request._id)}</span>
                                 <span>{request.type}</span>
                                 <span>{request.createdAt}</span>
                                 <span>{request.status}</span>
