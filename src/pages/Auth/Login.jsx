@@ -1,7 +1,7 @@
 import {useState,useContext} from 'react';
 import './Auth.css'
 import { Link,useNavigate } from 'react-router-dom';
-import Logo from '../../resources/EcoHaul.svg'
+import Logo from '../../resources/EcoHaul.svg';
 import { AuthContext } from '../../Hooks/InfoContext'; 
 import EnvelopeIcon from '@heroicons/react/24/outline/EnvelopeIcon';
 import LockClosedIcon from '@heroicons/react/24/outline/LockClosedIcon';
@@ -10,18 +10,18 @@ function Login() {
     const { Login } = useContext(AuthContext); 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         Login(email, password)
-          .then(() => {
+        .then(() => {
             navigate('/'); // Navigate to the desired route after successful login
           })
           .catch(err => {
             console.log('Login error: from Login.jsx', err);
-          });
-      };
+        });
+    };
     return (
         <div className='container'>
             <div className='logo-container'>
