@@ -4,6 +4,12 @@ import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import Avatar from 'react-avatar';
+import Good from '../../resources/Good.svg';
+import UnhealthyFp from '../../resources/Unhealthy.svg';
+import UnhealthyV from '../../resources/UnhealthyV.svg';
+import UnhealthyVV from '../../resources/UnhealthyVV.svg';
+import Hazardous from '../../resources/Hazardous.svg';
+import Moderate from '../../resources/Moderate.svg';
 import searchIcon from '../../resources/searchIcon.png';
 import notification from '../../resources/notification.png';
 import { AuthContext } from '../../Hooks/InfoContext';
@@ -29,19 +35,31 @@ function UserHome() {
     useEffect(() => {
         const fetchAirQualityData = async (bounds, region) => {
             const token = 'baeb66a7595a718c9712b72174a654b5891e92a4'; // Replace with your token
-            const apiUrl = `https://api.waqi.info/map/bounds?token=${token}&latlng=${bounds.latlng}`;
+            const apiUrl = `https://api.yourapi.com/global-data?token=${token}`;
 
             try {
                 const response = await axios.get(apiUrl);
-                console.log(`Air Quality Data for ${region}:`, response.data);
-                setAirQualityData(prevData => [
-                    ...prevData,
-                    { region, data: response.data },
-                ]);
+                if (response.data.status === 'ok') {
+                    // Assuming 'response.data.data' is the array of your items
+                    const airQualityItems = response.data.data;
+                    console.log(`Fetched ${airQualityItems.length} air quality items for ${region}`);
+                    console.log(airQualityItems.lat,"aQItems");
+                    const formattedData = airQualityItems.map(item => ({
+                        lat: item.lat,
+                        lon: item.lon,
+                        aqi: item.aqi
+                    }));
+                    setAirQualityData(airQualityItems);
+                    if (airQualityData.length > 0) {
+                        airQualityData.forEach(item => console.log(item.lat, item.lon, item.aqi));
+                    }
+                } else {
+                    console.error(`Response status is not OK for ${region}:`, response.data.status);
+                }
             } catch (error) {
                 console.error(`Error fetching data for ${region}:`, error);
             }
-        };
+        };   
 
         // Bounds for Africa
         const africaBounds = {
@@ -49,22 +67,37 @@ function UserHome() {
         };
         fetchAirQualityData(africaBounds, 'Africa');
 
-        // Bounds for Europe
-        const europeBounds = {
-            latlng: '35,-32,71,41',
-        };
-        fetchAirQualityData(europeBounds, 'Europe');
+        
+        
     }, []);
 
-    // Add your own images for each AQI level
-const aqiImages = {
-    good: '../../resources/Good.png',
-    moderate: '../../resources/Moderate.png',
-    unhealthyforPeople: '../../resources/Unhealthy.png',
-    Unhealthy: '../../resources/UnhealthyV.png',
-    VeryUnhealthy: '../../resources/UnhealthyVV.png',
-    hazardous: '../../resources/Hazardous.png',
-  };
+    //  images for each AQI level
+   const aqiImages = {
+    good: Good,
+    moderate: Moderate,
+    unhealthyforPeople: UnhealthyFp,
+    Unhealthy: UnhealthyV,
+    VeryUnhealthy: UnhealthyVV,
+    hazardous: Hazardous,
+    };
+
+    const getAqiMarkerImage = (aqi) => {
+        if (aqi <= 50) {
+          return aqiImages.good;
+        } else if (aqi <= 100) {
+          return aqiImages.moderate;
+        } else if (aqi <= 150) {
+          return aqiImages.unhealthyforPeople;
+        } else if (aqi <= 200) {
+          return aqiImages.Unhealthy;
+        } else if (aqi <= 300) {
+          // Add more conditions if needed
+          return aqiImages.VeryUnhealthy; // Default to hazardous for high AQI values
+        }else {
+            return aqiImages.hazardous;
+        }
+    };
+      
   
     
     const WasteTypeModal = () => (
@@ -215,6 +248,24 @@ const aqiImages = {
                         {lat !== 0 && long !== 0 && (
                             <Marker position={{ lat, lng: long }} />
                         )}
+                        {airQualityData.map(item => {
+    // Choose an icon based on AQI value
+    const markerIcon = getAqiMarkerImage(item.aqi);
+    console.log(`Rendering marker for item:`, item); 
+    return (
+        <Marker
+            key={item.lat + "_" + item.lon} // Using lat and lon combination as a key
+            position={{ lat: Number(item.lat), lng: Number(item.lon) }}
+            icon={{
+                url: markerIcon,
+                scaledSize: new window.google.maps.Size(30, 30),
+            }}
+            // You can add an onClick handler if needed
+            // onClick={() => handleMarkerClick(item)}
+        />
+    );
+})}
+
                 </GoogleMap>
                </div>
             </div>
